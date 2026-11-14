@@ -1,71 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="hi">
 <head>
-<title>Rajan AI Previous Paper</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rajan AI - Previous Paper</title>
 <style>
-body{font-family:Arial;background:#f2f2f2;text-align:center;margin:0}
-h1{background:#1a73e8;color:white;padding:20px;margin:0}
-.btn{padding:12px 25px;margin:10px;font-size:18px;border:none;border-radius:10px;cursor:pointer}
-.btn-up{background:#ff5722;color:white}
-.btn-cbse{background:#0d47a1;color:white}
-.card{background:white;margin:12px;padding:15px;border-radius:12px;text-align:left}
-.card a{background:green;color:white;padding:8px 15px;text-decoration:none;border-radius:8px;float:right}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#f2f4f8}
+.top{background:#0b3d91;color:white;padding:20px 15px;text-align:center}
+.top h1{font-size:26px}
+.top p{font-size:14px;opacity:0.9;margin-top:5px}
+.search-box{padding:15px;text-align:center}
+.search-box input{width:95%;max-width:500px;padding:12px;border-radius:25px;border:1px solid #ccc;font-size:16px;outline:none}
+.tabs{display:flex;justify-content:center;gap:10px;padding:0 15px}
+.tabs button{padding:10px 20px;border:none;border-radius:20px;background:white;cursor:pointer;font-weight:bold;box-shadow:0 2px 5px #00000020}
+.tabs button.active{background:#0b3d91;color:white}
+.container{padding:15px;max-width:800px;margin:auto}
+.card{background:white;border-radius:12px;padding:15px;margin-bottom:15px;box-shadow:0 2px 8px #00000010;display:flex;justify-content:space-between;align-items:center}
+.card h3{font-size:17px}
+.card p{font-size:13px;color:#666;margin-top:4px}
+.btn{background:#25D366;color:white;text-decoration:none;padding:10px 16px;border-radius:8px;font-weight:bold;font-size:14px}
+.footer{text-align:center;padding:20px;color:#888;font-size:13px}
 </style>
 </head>
 <body>
-<h1>Rajan AI Previous Paper</h1>
-<p>UP Board & CBSE Board - 2010 to 2025</p>
 
-<button class="btn btn-up" onclick="show('up')">UP BOARD</button>
-<button class="btn btn-cbse" onclick="show('cbse')">CBSE BOARD</button>
-
-<div id="up">
-<h2>UP Board Paper (2010-2025)</h2>
-<div class="card">UP Board 2025 <a href="up-2025.pdf">Download</a></div>
-<div class="card">UP Board 2024 <a href="up-2024.pdf">Download</a></div>
-<div class="card">UP Board 2023 <a href="up-2023.pdf">Download</a></div>
-<div class="card">UP Board 2022 <a href="up-2022.pdf">Download</a></div>
-<div class="card">UP Board 2021 <a href="up-2021.pdf">Download</a></div>
-<div class="card">UP Board 2020 <a href="up-2020.pdf">Download</a></div>
-<div class="card">UP Board 2019 <a href="up-2019.pdf">Download</a></div>
-<div class="card">UP Board 2018 <a href="up-2018.pdf">Download</a></div>
-<div class="card">UP Board 2017 <a href="up-2017.pdf">Download</a></div>
-<div class="card">UP Board 2016 <a href="up-2016.pdf">Download</a></div>
-<div class="card">UP Board 2015 <a href="up-2015.pdf">Download</a></div>
-<div class="card">UP Board 2014 <a href="up-2014.pdf">Download</a></div>
-<div class="card">UP Board 2013 <a href="up-2013.pdf">Download</a></div>
-<div class="card">UP Board 2012 <a href="up-2012.pdf">Download</a></div>
-<div class="card">UP Board 2011 <a href="up-2011.pdf">Download</a></div>
-<div class="card">UP Board 2010 <a href="up-2010.pdf">Download</a></div>
+<div class="top">
+  <h1>📚 RAJAN AI</h1>
+  <p>Previous Year Papers - UP Board & CBSE Board</p>
+  <p style="font-size:12px;margin-top:8px">Made by Rajan Kamboj</p>
 </div>
 
-<div id="cbse" style="display:none">
-<h2>CBSE Board Paper (2010-2025)</h2>
-<div class="card">CBSE 2025 <a href="cbse-2025.pdf">Download</a></div>
-<div class="card">CBSE 2024 <a href="cbse-2024.pdf">Download</a></div>
-<div class="card">CBSE 2023 <a href="cbse-2023.pdf">Download</a></div>
-<div class="card">CBSE 2022 <a href="cbse-2022.pdf">Download</a></div>
-<div class="card">CBSE 2021 <a href="cbse-2021.pdf">Download</a></div>
-<div class="card">CBSE 2020 <a href="cbse-2020.pdf">Download</a></div>
-<div class="card">CBSE 2019 <a href="cbse-2019.pdf">Download</a></div>
-<div class="card">CBSE 2018 <a href="cbse-2018.pdf">Download</a></div>
-<div class="card">CBSE 2017 <a href="cbse-2017.pdf">Download</a></div>
-<div class="card">CBSE 2016 <a href="cbse-2016.pdf">Download</a></div>
-<div class="card">CBSE 2015 <a href="cbse-2015.pdf">Download</a></div>
-<div class="card">CBSE 2014 <a href="cbse-2014.pdf">Download</a></div>
-<div class="card">CBSE 2013 <a href="cbse-2013.pdf">Download</a></div>
-<div class="card">CBSE 2012 <a href="cbse-2012.pdf">Download</a></div>
-<div class="card">CBSE 2011 <a href="cbse-2011.pdf">Download</a></div>
-<div class="card">CBSE 2010 <a href="cbse-2010.pdf">Download</a></div>
+<div class="search-box">
+  <input type="text" id="search" onkeyup="searchPaper()" placeholder="🔍 Paper dhoondho... jaise 2024, Hindi, Maths">
 </div>
 
-<script>
-function show(id){
-document.getElementById('up').style.display='none';
-document.getElementById('cbse').style.display='none';
-document.getElementById(id).style.display='block';
-}
-</script>
-</body>
-</html>
+<div class="tabs">
+  <button class="active" onclick="showBoard
