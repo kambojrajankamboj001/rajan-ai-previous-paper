@@ -10,16 +10,20 @@ body{background:#f2f4f8}
 .top{background:#0b3d91;color:white;padding:25px 15px;text-align:center}
 .top h1{font-size:30px}
 .top p{font-size:14px;opacity:0.9;margin-top:5px}
-.boards{display:flex;gap:12px;padding:20px 15px 10px;max-width:600px;margin:auto}
-.board-btn{flex:1;padding:22px 10px;border-radius:16px;border:none;cursor:pointer;text-align:center;box-shadow:0 3px 10px #00000020;background:white}
+.label{text-align:center;font-weight:bold;margin:15px 0 5px;color:#333;font-size:14px}
+.boards{display:flex;gap:12px;padding:5px 15px;max-width:600px;margin:auto}
+.board-btn{flex:1;padding:20px 10px;border-radius:16px;border:none;cursor:pointer;text-align:center;box-shadow:0 3px 10px #00000020;background:white}
 .board-btn b{font-size:20px;display:block}
 .board-btn span{font-size:12px;color:#666}
 .board-btn.active{background:#0b3d91;color:white}
 .board-btn.active span{color:#dbeafe}
-.class-box{display:flex;gap:10px;padding:5px 15px 10px;max-width:600px;margin:auto}
-.class-btn{flex:1;padding:14px;border-radius:12px;border:1px solid #ff6b00;background:white;color:#ff6b00;font-weight:bold;cursor:pointer;font-size:16px}
+.class-box{display:flex;gap:10px;padding:5px 15px;max-width:600px;margin:auto}
+.class-btn{flex:1;padding:14px;border-radius:12px;border:2px solid #ff6b00;background:white;color:#ff6b00;font-weight:bold;cursor:pointer;font-size:16px}
 .class-btn.active{background:#ff6b00;color:white}
-.container{padding:0 15px 15px;max-width:800px;margin:auto}
+.sub-box{display:flex;gap:8px;padding:5px 15px;max-width:700px;margin:auto;flex-wrap:wrap;justify-content:center}
+.sub-btn{padding:10px 16px;border-radius:20px;border:1px solid #00a651;background:white;color:#00a651;font-weight:bold;cursor:pointer;font-size:14px}
+.sub-btn.active{background:#00a651;color:white}
+.container{padding:10px 15px 15px;max-width:800px;margin:auto}
 .section-title{font-size:19px;font-weight:bold;margin:10px 0 12px 2px}
 .year-title{background:#0b3d91;color:white;padding:8px 12px;border-radius:8px;font-weight:bold;margin:18px 0 10px;font-size:16px}
 .card{background:white;border-radius:12px;padding:14px;margin-bottom:10px;box-shadow:0 2px 8px #00000010;display:flex;justify-content:space-between;align-items:center;gap:10px}
@@ -37,68 +41,89 @@ body{background:#f2f4f8}
   <p style="font-size:12px;margin-top:8px">Made by Rajan Kamboj</p>
 </div>
 
-<!-- 2 BADE OPTION -->
+<!-- OPTION 1 - BOARD -->
+<div class="label">👇 1. BOARD CHUNO</div>
 <div class="boards">
-  <button class="board-btn" id="btn-up" onclick="showBoard('up')"><b>🏫 UP BOARD</b><span>Class 10 & 12</span></button>
-  <button class="board-btn active" id="btn-cbse" onclick="showBoard('cbse')"><b>🎓 CBSE BOARD</b><span>Maths Side | 2010-2025</span></button>
+  <button class="board-btn active" id="btn-up" onclick="showBoard('up')"><b>🏫 UP BOARD</b><span>Bijnor | Hindi Medium</span></button>
+  <button class="board-btn" id="btn-cbse" onclick="showBoard('cbse')"><b>🎓 CBSE BOARD</b><span>Maths Side</span></button>
 </div>
 
-<!-- CBSE KE ANDAR CLASS 10 / 12 -->
-<div class="class-box" id="cbse-class-box">
-  <button class="class-btn active" id="c10-btn" onclick="showCBSEClass('10')">📘 Class 10 - 64 Papers</button>
-  <button class="class-btn" id="c12-btn" onclick="showCBSEClass('12')">📗 Class 12 - 80 Papers</button>
+<!-- OPTION 2 - CLASS - DONO BOARD ME -->
+<div class="label">👇 2. CLASS CHUNO</div>
+<div class="class-box">
+  <button class="class-btn active" id="c10-btn" onclick="showClass('10')">📘 Class 10</button>
+  <button class="class-btn" id="c12-btn" onclick="showClass('12')">📗 Class 12</button>
 </div>
+
+<!-- OPTION 3 - SUBJECT -->
+<div class="label">👇 3. SUBJECT CHUNO</div>
+<div class="sub-box" id="sub-box"></div>
 
 <div class="container">
-
-  <!-- UP BOARD -->
-  <div id="section-up" style="display:none">
-    <div class="section-title">📘 UP Board Papers</div>
-    <div class="card">
-      <div><h3>UP Board Class 10 - Hindi - 2024</h3><p>UP Board - Bijnor | Hindi Medium | PDF</p></div>
-      <a class="btn" href="LINK-YAHAN-DALO" target="_blank">Download</a>
-    </div>
-    <div class="card">
-      <div><h3>UP Board Class 12 - Maths - 2024</h3><p>UP Board - Bijnor | Hindi Medium | PDF</p></div>
-      <a class="btn" href="LINK-YAHAN-DALO" target="_blank">Download</a>
-    </div>
-  </div>
-
-  <!-- CBSE BOARD -->
-  <div id="section-cbse">
-    <div class="section-title" id="cbse-title">📗 CBSE Board - Class 10 - Maths Side - Total 64 Papers (2010 - 2025)</div>
-    <div id="cbseList"></div>
-  </div>
-
+  <div class="section-title" id="main-title">📘 UP Board - Class 10 - All Subjects (2010-2025)</div>
+  <div id="paperList"></div>
 </div>
 
 <div class="footer">© 2026 Rajan AI - All Papers Free</div>
 
 <script>
-let curBoard='cbse', curCBSEClass='10';
+let curBoard='up', curClass='10', curSub='All';
+
+// SUBJECTS - SAB KUCH
+let DATA = {
+  up: {
+    '10': ['Hindi','English','Maths','Science','Social Science','Sanskrit','Computer'],
+    '12': ['Hindi','English','Maths','Physics','Chemistry','Biology','Computer Science']
+  },
+  cbse: {
+    '10': ['Maths','Science','English','Hindi','Social Science','Sanskrit','Information Technology'],
+    '12': ['Maths','Physics','Chemistry','English','Hindi','Computer Science','Physical Education']
+  }
+};
 
 function showBoard(board){
-  curBoard=board;
-  document.getElementById('section-up').style.display = board=='up' ? 'block' : 'none';
-  document.getElementById('section-cbse').style.display = board=='cbse' ? 'block' : 'none';
-  document.getElementById('cbse-class-box').style.display = board=='cbse' ? 'flex' : 'none';
+  curBoard=board; curSub='All';
   document.getElementById('btn-up').classList.toggle('active', board=='up');
   document.getElementById('btn-cbse').classList.toggle('active', board=='cbse');
+  renderAll();
 }
-
-function showCBSEClass(cls){
-  curCBSEClass=cls;
+function showClass(cls){
+  curClass=cls; curSub='All';
   document.getElementById('c10-btn').classList.toggle('active', cls=='10');
   document.getElementById('c12-btn').classList.toggle('active', cls=='12');
-  document.getElementById('cbse-title').innerText = cls=='10' ? '📗 CBSE Board - Class 10 - Maths Side - Total 64 Papers (2010 - 2025)' : '📗 CBSE Board - Class 12 - Maths Side - Total 80 Papers (2010 - 2025)';
-  renderCBSE();
+  renderAll();
 }
+function renderSubjects(){
+  let list = DATA[curBoard][curClass];
+  let h = `<button class="sub-btn ${curSub=='All'?'active':''}" onclick="setSub('All')">All Subjects</button>`;
+  list.forEach(s=>{
+    h += `<button class="sub-btn ${s==curSub?'active':''}" onclick="setSub('${s}')">${s}</button>`;
+  });
+  document.getElementById('sub-box').innerHTML = h;
+}
+function setSub(s){ curSub=s; renderAll(); }
 
-function renderCBSE(){
+function renderAll(){
+  renderSubjects();
+  let boardName = curBoard=='up' ? 'UP Board' : 'CBSE Board';
+  let boardIcon = curBoard=='up' ? '📘' : '📗';
+  document.getElementById('main-title').innerText = `${boardIcon} ${boardName} - Class ${curClass} - ${curSub=='All'?'All Subjects':curSub} (2010-2025)`;
+
   let html="";
+  let link = curBoard=='up' ? 'https://upmsp.edu.in/' : 'https://cbseacademic.nic.in/previous-year-question-papers.html';
+  let medium = curBoard=='up' ? 'Hindi Medium | Bijnor' : 'English Medium | Maths Side';
+
   for(let year=2025; year>=2010; year--){
+    let subs = DATA[curBoard][curClass];
+    let filtered = curSub=='All' ? subs : subs.filter(s=>s==curSub);
     html += `<div class="year-title">📅 Year ${year}</div>`;
-    if(curCBSEClass=='10'){
-      // CLASS 10 - 4 SUBJECT - TOTAL 64
-      html += `
-      <div class="card"><div><h3>CBSE Class 10 - Maths - ${year}</h3><p>CBSE | Maths Side | PDF</
+    filtered.forEach(sub=>{
+      html += `<div class="card"><div><h3>${boardName} Class ${curClass} - ${sub} - ${year}</h3><p>${boardName} | ${medium} | PDF</p></div><a class="btn" href="${link}" target="_blank">Download</a></div>`;
+    });
+  }
+  document.getElementById('paperList').innerHTML = html;
+}
+renderAll();
+</script>
+</body>
+</html>
