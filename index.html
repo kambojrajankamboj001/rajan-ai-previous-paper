@@ -28,42 +28,30 @@ body{background:#f2f4f8}
 .q-item:last-child{border-bottom:none}
 .q{font-weight:bold;font-size:15px}
 .a{color:#0a7a3a;font-size:15px;margin-top:4px}
-.a b{color:#0a7a3a}
 .num{color:#ff6b00}
 </style>
 </head>
 <body>
-
 <div class="top"><h1>📚 RAJAN AI</h1><p>UP Board - Class 12 - Important Questions</p></div>
-
 <div class="label">👇 1. BOARD CHUNO</div>
 <div class="boards">
-  <button class="board-btn active" id="btn-up">🏫 <b>UP BOARD</b></button>
-  <button class="board-btn" id="btn-cbse">🎓 <b>CBSE BOARD</b></button>
+<button class="board-btn active" id="btn-up">🏫 <b>UP BOARD</b></button>
+<button class="board-btn" id="btn-cbse">🎓 <b>CBSE BOARD</b></button>
 </div>
-
 <div class="label">👇 2. CLASS CHUNO</div>
 <div class="class-box">
-  <button class="class-btn" id="c10-btn">📘 Class 10</button>
-  <button class="class-btn active" id="c12-btn">📗 Class 12</button>
+<button class="class-btn" id="c10-btn">📘 Class 10</button>
+<button class="class-btn active" id="c12-btn">📗 Class 12</button>
 </div>
-
 <div class="label">👇 3. SUBJECT CHUNO</div>
 <div class="sub-box" id="sub-box"></div>
-
 <div class="container"><div id="content"></div></div>
-
 <script>
 let curBoard='up', curClass='12', curSub='सामान्य हिन्दी';
+let SUBJECTS={up:{'10':['सामान्य हिन्दी','English','Maths','Science','Social Science'],'12':['सामान्य हिन्दी','English','Maths','Physics','Chemistry','Biology']},cbse:{'10':['Hindi','English','Maths','Science','Social Science'],'12':['Hindi','English','Maths','Physics','Chemistry','Biology']}};
 
-let SUBJECTS = {
-  up: { '10': ['सामान्य हिन्दी','English','Maths','Science','Social Science'],
-        '12': ['सामान्य हिन्दी','English','Maths','Physics','Chemistry'] },
-  cbse: { '10': ['Hindi','English','Maths','Science','Social Science'],
-          '12': ['Hindi','English','Maths','Physics','Chemistry'] }
-};
-
-let hindiQA = [
+// HINDI - 160
+let hindiQA=[
 ["भारतेन्दु हरिश्चन्द्र का साहित्यिक परिचय लिखिए।","भारतेन्दु हरिश्चन्द्र आधुनिक हिन्दी साहित्य के जनक माने जाते हैं।"],
 ["महावीर प्रसाद द्विवेदी का साहित्यिक परिचय लिखिए।","महावीर प्रसाद द्विवेदी हिन्दी भाषा के महान लेखक और सुधारक थे।"],
 ["जयशंकर प्रसाद का साहित्यिक परिचय लिखिए।","जयशंकर प्रसाद छायावाद के प्रमुख कवि, नाटककार और उपन्यासकार थे।"],
@@ -226,33 +214,134 @@ let hindiQA = [
 ["प्रधानाचार्य को चरित्र प्रमाण-पत्र के लिए आवेदन लिखिए।","कृपया मुझे आगे की पढ़ाई में प्रवेश लेने हेतु चरित्र प्रमाण-पत्र प्रदान करने की कृपा करें।"]
 ];
 
+// ENGLISH - 100
+let englishQA=[
+["What was the third level?","It was a mysterious place at Grand Central Station."],
+["Who was Charley?","Charley was the main character of The Third Level."],
+["Why did Charley want to visit Galesburg?","He wanted to live a peaceful and simple life."],
+["Who wrote The Third Level?","Jack Finney wrote this story."],
+["What is the message of The Third Level?","It shows the desire to escape from modern life's stress."],
+["Who was the Tiger King?","He was a king who was obsessed with killing tigers."],
+["Why did the Tiger King kill tigers?","He wanted to escape the prediction of his death."],
+["How many tigers did the king want to kill?","He wanted to kill one hundred tigers."],
+["How did the Tiger King die?","He died because of an infection caused by a splinter from a wooden tiger."],
+["Who wrote The Tiger King?","Kalki wrote this story."],
+["Who was Dr. Sadao?","He was a skilled Japanese doctor."],
+["Who was Hana?","Hana was Dr. Sadao's wife."],
+["Why did Dr. Sadao help the American soldier?","He helped him because he believed in humanity."],
+["What is the message of The Enemy?","Humanity is greater than war and hatred."],
+["Who was Derry?","Derry was a young boy whose face was burnt by acid."],
+["Who was Mr. Lamb?","Mr. Lamb was an old man with a tin leg."],
+["What did Mr. Lamb teach Derry?","He taught Derry to be confident and enjoy life."],
+["What is the theme of On the Face of It?","It teaches us not to judge people by their appearance."],
+["Who was Bama?","Bama was a young girl from a Dalit family."],
+["What did Bama experience?","She experienced caste discrimination."],
+["Who was Zitkala-Sa?","She was a Native American writer."],
+["Why was Zitkala-Sa unhappy at school?","She was forced to follow unfamiliar customs."],
+["Why were Zitkala-Sa's long hair cut?","The school authorities forced her to cut her hair."],
+["What did Bama's brother advise her?","He advised her to study hard and become successful."],
+["What is discrimination?","Discrimination means treating someone unfairly."],
+["What is communication?","Communication is the exchange of information, ideas and feelings."],
+["What is the importance of English?","English helps in education, jobs and communication."],
+["What are the main elements of communication?","Sender, message, encoding, channel, receiver, decoding and feedback."],
+["What is verbal communication?","It is communication through spoken or written words."],
+["What is non-verbal communication?","It is communication without using words."],
+["What are communication barriers?","They are problems that prevent proper communication."],
+["What is feedback?","Feedback is the response given by the receiver."],
+["What is oral communication?","It is communication through spoken words."],
+["What is written communication?","It is communication through written words."],
+["What are the 7 Cs of communication?","Clear, Concise, Concrete, Correct, Coherent, Complete and Courteous."],
+["What is the communication process?","It is the process of sending and receiving messages."],
+["What is encoding?","Encoding means converting ideas into words or symbols."],
+["What is decoding?","Decoding means understanding the received message."],
+["What is effective communication?","It is clear and correct exchange of information."],
+["What is body language?","Body language is communication through body movements and gestures."],
+["What are facial expressions?","They are movements of the face that express feelings."],
+["What is eye contact?","It means looking at another person's eyes while communicating."],
+["What is personal appearance?","It means the way a person looks and presents themselves."],
+["What is listening?","Listening means carefully hearing and understanding someone."],
+["What is formal communication?","It is official communication through proper channels."],
+["What is informal communication?","It is casual communication without official rules."],
+["What is upward communication?","It is communication from lower-level employees to higher authorities."],
+["What is downward communication?","It is communication from higher authorities to lower-level employees."],
+["What is horizontal communication?","It is communication between people working at the same level."],
+["What is a noun?","A noun is the name of a person, place, animal, thing or idea."],
+["What is a pronoun?","A pronoun is used in place of a noun."],
+["What is a verb?","A verb is a word that shows an action or state."],
+["What is an adjective?","An adjective describes a noun or pronoun."],
+["What is an adverb?","An adverb describes a verb, adjective or another adverb."],
+["What is a preposition?","A preposition shows the relation of a noun or pronoun with another word."],
+["What is an article?","An article is a word used before a noun."],
+["Name the three articles.","A, An and The."],
+["When do we use A?","We use A before a singular countable noun beginning with a consonant sound."],
+["When do we use An?","We use An before a singular countable noun beginning with a vowel sound."],
+["When do we use The?","We use The before a particular or specific noun."],
+["What is tense?","Tense shows the time of an action."],
+["Name the three main tenses.","Present, Past and Future."],
+["What is Present Tense?","It describes an action happening now or regularly."],
+["What is Past Tense?","It describes an action that happened in the past."],
+["What is Future Tense?","It describes an action that will happen in the future."],
+["What is Simple Present Tense?","It expresses habits, routines and universal truths."],
+["What is Present Continuous Tense?","It describes an action happening at the present time."],
+["What is Present Perfect Tense?","It describes an action completed with a connection to the present."],
+["What is Present Perfect Continuous Tense?","It describes an action that started in the past and is still continuing."],
+["What is Active Voice?","It is a sentence in which the subject performs the action."],
+["What is Passive Voice?","It is a sentence in which the subject receives the action."],
+["What is Direct Speech?","It reports the exact words of a speaker."],
+["What is Indirect Speech?","It reports a speaker's words without quoting them exactly."],
+["What is a conjunction?","A conjunction joins words or sentences."],
+["What is an interjection?","An interjection expresses sudden feelings or emotions."],
+["What is a sentence?","A sentence is a group of words that gives complete meaning."],
+["What is a synonym?","A synonym is a word with the same or similar meaning."],
+["What is an antonym?","An antonym is a word with the opposite meaning."],
+["What is a prefix?","A prefix is a group of letters added at the beginning of a word."],
+["What is a suffix?","A suffix is a group of letters added at the end of a word."],
+["What is subject-verb agreement?","It means the verb must agree with its subject in number and person."],
+["Give an example of a noun.","Ram, Book, Delhi and Honesty."],
+["Give an example of a pronoun.","He, She, It and They."],
+["Give an example of a verb.","Eat, Run, Play and Write."],
+["Give an example of an adjective.","Beautiful, Tall, Red and Good."],
+["Give an example of an adverb.","Slowly, Quickly and Carefully."],
+["Give an example of a preposition.","In, On, At and Under."],
+["Give an example of a conjunction.","And, But, Or and Because."],
+["Give an example of an interjection.","Wow! Hurrah! Alas!"],
+["Give an example of a synonym.","Happy - Glad."],
+["Give an example of an antonym.","Hot - Cold."],
+["Give an example of a prefix.","Happy - Unhappy."],
+["Give an example of a suffix.","Care - Careful."],
+["Give an example of Active Voice.","Ram writes a letter."],
+["Give an example of Passive Voice.","A letter is written by Ram."],
+["Give an example of Direct Speech.","He said, I am happy."],
+["Give an example of Indirect Speech.","He said that he was happy."],
+["Give an example of Simple Present Tense.","She goes to school."],
+["Give an example of Present Continuous Tense.","He is reading a book."],
+["Give an example of Present Perfect Tense.","I have finished my work."]
+];
+
 function renderAll(){
-  document.getElementById('btn-up').className='board-btn'+(curBoard=='up'?' active':'');
-  document.getElementById('btn-cbse').className='board-btn'+(curBoard=='cbse'?' active':'');
-  document.getElementById('c10-btn').className='class-btn'+(curClass=='10'?' active':'');
-  document.getElementById('c12-btn').className='class-btn'+(curClass=='12'?' active':'');
-
-  let subs = SUBJECTS[curBoard][curClass];
-  let sh="";
-  subs.forEach((s,i)=>{
-    sh+='<button class="sub-btn'+(s==curSub?' active':'')+'" data-i="'+i+'">'+s+'</button>';
-  });
-  document.getElementById('sub-box').innerHTML=sh;
-  let btns=document.getElementById('sub-box').getElementsByTagName('button');
-  for(let i=0;i<btns.length;i++){ btns[i].onclick=function(){ curSub=SUBJECTS[curBoard][curClass][parseInt(this.getAttribute('data-i'))]; renderAll(); }; }
-
-  let isHindi = (curBoard=='up' && curClass=='12' && curSub=='सामान्य हिन्दी');
-  let html="";
-  if(isHindi){
-    html+='<div class="title-box"><b>🔥 UP Board 2027 – कक्षा 12वीं सामान्य हिन्दी</b><br>160 महत्वपूर्ण प्रश्न – एक लाइन में उत्तर</div><div class="q-box">';
-    hindiQA.forEach((item,i)=>{
-      html+='<div class="q-item"><div class="q"><span class="num">'+(i+1)+'.</span> '+item[0]+'</div><div class="a"><b>उत्तर –</b> '+item[1]+'</div></div>';
-    });
-    html+='</div><div class="q-box" style="text-align:center;font-size:13px;color:#666">पढ़ने की सलाह: ये एक लाइन वाले उत्तर जल्दी याद करने के लिए हैं। साहित्यिक परिचय, निबंध और पत्र जैसे बड़े प्रश्नों में परीक्षा में अधिक अंक पाने के लिए विस्तार से लिखने का अभ्यास भी करना।</div>';
-  } else {
-    html+='<div class="q-box" style="text-align:center"><b>'+(curBoard=='up'?'UP Board':'CBSE Board')+' - Class '+curClass+' - '+curSub+'</b><br><br>इस Subject के Questions जल्दी आएंगे।<br>अभी Hindi वाला पढ़ लो!</div>';
-  }
-  document.getElementById('content').innerHTML=html;
+document.getElementById('btn-up').className='board-btn'+(curBoard=='up'?' active':'');
+document.getElementById('btn-cbse').className='board-btn'+(curBoard=='cbse'?' active':'');
+document.getElementById('c10-btn').className='class-btn'+(curClass=='10'?' active':'');
+document.getElementById('c12-btn').className='class-btn'+(curClass=='12'?' active':'');
+let subs=SUBJECTS[curBoard][curClass];
+let sh="";
+subs.forEach((s,i)=>{sh+='<button class="sub-btn'+(s==curSub?' active':'')+'" data-i="'+i+'">'+s+'</button>';});
+document.getElementById('sub-box').innerHTML=sh;
+let btns=document.getElementById('sub-box').getElementsByTagName('button');
+for(let i=0;i<btns.length;i++){btns[i].onclick=function(){curSub=SUBJECTS[curBoard][curClass][parseInt(this.getAttribute('data-i'))];renderAll();};}
+let html="";
+if(curBoard=='up' && curClass=='12' && curSub=='सामान्य हिन्दी'){
+html+='<div class="title-box"><b>🔥 UP Board 2027 – कक्षा 12वीं सामान्य हिन्दी</b><br>160 महत्वपूर्ण प्रश्न – एक लाइन में उत्तर</div><div class="q-box">';
+hindiQA.forEach((item,i)=>{html+='<div class="q-item"><div class="q"><span class="num">'+(i+1)+'.</span> '+item[0]+'</div><div class="a"><b>उत्तर –</b> '+item[1]+'</div></div>';});
+html+='</div>';
+} else if(curBoard=='up' && curClass=='12' && curSub=='English'){
+html+='<div class="title-box"><b>🔥 UP Board Class 12 English 2027</b><br>100 Important Questions – Answers</div><div class="q-box">';
+englishQA.forEach((item,i)=>{html+='<div class="q-item"><div class="q"><span class="num">'+(i+51)+'.</span> '+item[0]+'</div><div class="a"><b>Ans –</b> '+item[1]+'</div></div>';});
+html+='</div>';
+} else {
+html+='<div class="q-box" style="text-align:center"><b>'+(curBoard=='up'?'UP Board':'CBSE Board')+' - Class '+curClass+' - '+curSub+'</b><br><br>इस Subject के Questions जल्दी आएंगे।<br>अभी Hindi / English वाला पढ़ लो!</div>';
+}
+document.getElementById('content').innerHTML=html;
 }
 document.getElementById('btn-up').onclick=function(){curBoard='up';curSub=SUBJECTS['up'][curClass][0];renderAll();};
 document.getElementById('btn-cbse').onclick=function(){curBoard='cbse';curSub=SUBJECTS['cbse'][curClass][0];renderAll();};
