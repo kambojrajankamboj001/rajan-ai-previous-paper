@@ -249,6 +249,27 @@ renderAll = function(){
     let title = curSub=='सामान्य हिन्दी' ? 'UP Board 2027 – कक्षा 10वीं सामान्य हिन्दी - 150 महत्वपूर्ण प्रश्न' : 'UP Board Class 10 '+curSub+' - 150 Questions';
     let html='<div class="title-box"><b>🔥 '+title+'</b></div><div class="count">Total Questions: '+arr.length+'</div><div class="q-box">';
     arr.forEach((item,i)=>{html+='<div class="q-item"><div class="q"><span class="num">'+(i+1)+'.</span> '+item[0]+'</div><div class="a"><b>उत्तर –</b> '+item[1]+'</div></div>';});
+    // ========== FIX 2 - SAME WALA HATAO ==========
+// English sahi hai, usko chhod do. Maths, Science, Social Science ka same wala hata do.
+
+if(typeof CLASS10_DATA !== 'undefined'){
+  // Ye 3 ka same wala data delete karo - ye 12th wala tha
+  delete CLASS10_DATA["Maths"];
+  delete CLASS10_DATA["Science"];
+  delete CLASS10_DATA["Social Science"];
+  // English ko haath mat lagao - wo tera wala sahi hai
+}
+
+// Class 10 me ab sirf 3 alag-alag Subject rahenge
+SUBJECTS.up['10'] = ['सामान्य हिन्दी','English','Drawing'];
+SUBJECTS.cbse['10'] = ['सामान्य हिन्दी','English','Drawing'];
+
+// Agar galat subject khula ho to Hindi pe le jao
+if(curClass=='10' && curSub!=='सामान्य हिन्दी' && curSub!=='English' && curSub!=='Drawing'){
+  curSub = 'सामान्य हिन्दी';
+}
+
+if(typeof renderAll === 'function'){ renderAll(); }
     html+='</div>';
     document.getElementById('content').innerHTML=html;
     return;
