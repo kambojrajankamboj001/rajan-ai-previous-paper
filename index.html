@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rajan AI - Previous Paper</title>
+<title>Rajan AI</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
 body{background:#f2f4f8}
@@ -13,83 +13,98 @@ body{background:#f2f4f8}
 .boards{display:flex;gap:12px;padding:5px 15px;max-width:600px;margin:auto}
 .board-btn{flex:1;padding:20px 10px;border-radius:16px;border:none;cursor:pointer;background:white;box-shadow:0 3px 10px #00000020}
 .board-btn b{font-size:20px;display:block}
-.board-btn span{font-size:12px;color:#666}
 .board-btn.active{background:#0b3d91;color:white}
-.board-btn.active span{color:#dbeafe}
 .class-box{display:flex;gap:10px;padding:5px 15px;max-width:600px;margin:auto}
 .class-btn{flex:1;padding:15px;border-radius:12px;border:2px solid #ff6b00;background:white;color:#ff6b00;font-weight:bold;cursor:pointer;font-size:17px}
 .class-btn.active{background:#ff6b00;color:white}
-.paper-btn{width:100%;padding:16px;border-radius:12px;border:2px solid #00a651;background:white;color:#00a651;font-weight:bold;cursor:pointer;font-size:16px;text-align:left}
+.paper-btn{width:100%;padding:16px;border-radius:12px;border:2px solid #00a651;background:white;color:#00a651;font-weight:bold;cursor:pointer;font-size:16px;text-align:left;margin-bottom:8px}
 .paper-btn.active{background:#00a651;color:white}
 .container{padding:10px 15px;max-width:800px;margin:auto}
 .q-box{background:white;border-radius:12px;padding:16px;margin-bottom:10px;box-shadow:0 2px 8px #00000010}
 .q-item{padding:10px 12px;border-bottom:1px solid #eee;font-size:15px;line-height:1.5}
 .q-item span{font-weight:bold;color:#ff6b00;margin-right:6px}
-.card{background:white;border-radius:12px;padding:14px;margin-bottom:10px;box-shadow:0 2px 8px #00000010;display:flex;justify-content:space-between;align-items:center}
+.card{background:white;border-radius:12px;padding:14px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
 .btn{background:#25D366;color:white;text-decoration:none;padding:9px 14px;border-radius:8px;font-weight:bold;font-size:13px}
-.footer{text-align:center;padding:20px;color:#888;font-size:13px}
 </style>
 </head>
 <body>
 
-<div class="top"><h1>📚 RAJAN AI</h1><p>Previous Year Papers - Free Download</p><p style="font-size:12px;margin-top:8px">Made by Rajan Kamboj</p></div>
+<div class="top"><h1>📚 RAJAN AI</h1><p>Previous Year Papers</p></div>
 
-<!-- OPTION 1 - BOARD -->
 <div class="label">👇 1. BOARD CHUNO</div>
 <div class="boards">
-  <button class="board-btn active" id="btn-up" onclick="showBoard('up')"><b>🏫 UP BOARD</b><span>बिजनौर | हिन्दी माध्यम</span></button>
-  <button class="board-btn" id="btn-cbse" onclick="showBoard('cbse')"><b>🎓 CBSE BOARD</b><span>Maths Side</span></button>
+  <button class="board-btn active" id="btn-up">🏫 <b>UP BOARD</b></button>
+  <button class="board-btn" id="btn-cbse">🎓 <b>CBSE BOARD</b></button>
 </div>
 
-<!-- OPTION 2 - CLASS - DONO BOARD ME 2-2 -->
 <div class="label">👇 2. CLASS CHUNO</div>
 <div class="class-box">
-  <button class="class-btn" id="c10-btn" onclick="showClass('10')">📘 Class 10</button>
-  <button class="class-btn active" id="c12-btn" onclick="showClass('12')">📗 Class 12</button>
+  <button class="class-btn" id="c10-btn">📘 Class 10</button>
+  <button class="class-btn active" id="c12-btn">📗 Class 12</button>
 </div>
 
-<!-- OPTION 3 - PAPER NAME -->
 <div class="label">👇 3. PAPER CHUNO</div>
 <div style="padding:5px 15px;max-width:600px;margin:auto" id="paper-box"></div>
 
-<div class="container">
-  <div id="content"></div>
-</div>
-<div class="footer">© 2026 Rajan AI - All Papers Free</div>
+<div class="container"><div id="content"></div></div>
 
 <script>
-let curBoard='up', curClass='12', curPaper='hindi';
+let curBoard = 'up';
+let curClass = '12';
+let curPaperIndex = 0;
 
-// PAPER LIST
 let PAPERS = {
-  up: {
-    '10': ['सामान्य हिन्दी','English','Maths','Science','Social Science'],
-    '12': ['सामान्य हिन्दी','English','Maths','Physics','Chemistry','Biology']
-  },
-  cbse: {
-    '10': ['Hindi','English','Maths','Science','Social Science'],
-    '12': ['Hindi','English','Maths','Physics','Chemistry','Computer Science']
-  }
+  up: { '10': ['सामान्य हिन्दी','English','Maths','Science'], '12': ['सामान्य हिन्दी','English','Maths','Physics','Chemistry'] },
+  cbse: { '10': ['Hindi','English','Maths','Science'], '12': ['Hindi','English','Maths','Physics','Chemistry'] }
 };
 
 let hindi12Questions = [
 "भारतेन्दु हरिश्चन्द्र का साहित्यिक परिचय एवं प्रमुख रचनाएँ लिखिए।","महावीर प्रसाद द्विवेदी का साहित्यिक परिचय लिखिए।","जयशंकर प्रसाद का साहित्यिक परिचय लिखिए।","प्रेमचन्द का साहित्यिक परिचय एवं प्रमुख रचनाएँ लिखिए।","महादेवी वर्मा का साहित्यिक परिचय लिखिए।","सूर्यकांत त्रिपाठी निराला का साहित्यिक परिचय लिखिए।","रामधारी सिंह दिनकर का साहित्यिक परिचय लिखिए।","आचार्य रामचन्द्र शुक्ल का साहित्यिक परिचय लिखिए।","छायावाद की प्रमुख विशेषताएँ लिखिए।","प्रगतिवाद की प्रमुख विशेषताएँ लिखिए।","कहानी के प्रमुख तत्वों का वर्णन कीजिए।","निबंध की प्रमुख विशेषताएँ लिखिए।","संस्मरण और रेखाचित्र में अंतर लिखिए।","हिन्दी गद्य की प्रमुख विधाओं का वर्णन कीजिए।","हिन्दी काव्य की प्रमुख विशेषताएँ लिखिए।","कविता के प्रमुख तत्वों का वर्णन कीजिए।","छायावादी काव्य की विशेषताएँ लिखिए।","हिन्दी साहित्य के इतिहास का काल विभाजन लिखिए।","रस की परिभाषा एवं उसके प्रकार लिखिए।","अलंकार की परिभाषा एवं उसके प्रकार लिखिए।","छंद की परिभाषा एवं उसके प्रकार लिखिए।","उपमा अलंकार और रूपक अलंकार में अंतर लिखिए।","मुहावरे और लोकोक्तियों में अंतर लिखिए।","संधि की परिभाषा एवं उसके भेद लिखिए।","समास की परिभाषा एवं उसके भेद लिखिए।","वाक्य शुद्ध कीजिए।","अनेक शब्दों के लिए एक शब्द लिखिए।","पर्यायवाची एवं विलोम शब्द लिखिए।","पर्यावरण प्रदूषण पर निबंध लिखिए।","बेरोजगारी की समस्या पर निबंध लिखिए।","महिला सशक्तिकरण पर निबंध लिखिए।","विज्ञान: वरदान या अभिशाप पर निबंध लिखिए।","विद्यार्थी जीवन में अनुशासन पर निबंध लिखिए।","भारतीय संस्कृति पर निबंध लिखिए।","सोशल मीडिया का प्रभाव पर निबंध लिखिए।","विकसित भारत 2047 पर निबंध लिखिए।","नारी शिक्षा का महत्व पर निबंध लिखिए।","जल संरक्षण पर निबंध लिखिए।","प्रधानाचार्य को अवकाश हेतु प्रार्थना-पत्र लिखिए।","नगर पालिका अधिकारी को सफाई व्यवस्था के लिए पत्र लिखिए।","समाचार-पत्र के संपादक को बढ़ते प्रदूषण के संबंध में पत्र लिखिए।","मित्र को परीक्षा में सफलता पर बधाई-पत्र लिखिए।","कहानी और उपन्यास में अंतर स्पष्ट कीजिए।","आत्मकथा और जीवनी में अंतर लिखिए।","हिन्दी नाटक के विकास पर प्रकाश डालिए।","हिन्दी निबंध साहित्य के विकास का वर्णन कीजिए।","व्यंग्य साहित्य की प्रमुख विशेषताएँ लिखिए।","प्रेमचन्द की कहानी कला की विशेषताएँ लिखिए।","हिन्दी साहित्य में भारतेन्दु युग का महत्व बताइए।","द्विवेदी युग की प्रमुख विशेषताएँ लिखिए।","रस के अंगों का वर्णन कीजिए।","वीर रस और करुण रस के उदाहरण लिखिए।","शब्दालंकार और अर्थालंकार में अंतर लिखिए।","दोहा और चौपाई छंद में अंतर लिखिए।","मुक्तक काव्य किसे कहते हैं?","महाकाव्य और खण्डकाव्य में अंतर लिखिए।","भक्तिकाल की प्रमुख विशेषताएँ लिखिए।","रीतिकाल की प्रमुख विशेषताएँ लिखिए।","आधुनिक काल की प्रमुख काव्य प्रवृत्तियाँ लिखिए।","मैथिलीशरण गुप्त का साहित्यिक परिचय लिखिए।","संज्ञा की परिभाषा एवं भेद लिखिए।","सर्वनाम की परिभाषा एवं भेद लिखिए।","विशेषण की परिभाषा एवं भेद लिखिए।","क्रिया की परिभाषा एवं भेद लिखिए।","तत्सम और तद्भव शब्दों में अंतर लिखिए।","उपसर्ग और प्रत्यय की परिभाषा लिखिए।","वाच्य किसे कहते हैं? इसके भेद लिखिए।","कारक की परिभाषा एवं भेद लिखिए।","शब्द शक्ति किसे कहते हैं?","वाक्य के भेद लिखिए।","राष्ट्रीय एकता पर निबंध लिखिए।","आतंकवाद की समस्या पर निबंध लिखिए।","इंटरनेट का महत्व पर निबंध लिखिए।","पुस्तकालय का महत्व पर निबंध लिखिए।","समय का सदुपयोग पर निबंध लिखिए।","खेलों का महत्व पर निबंध लिखिए।","प्रधानाचार्य को फीस माफी के लिए प्रार्थना-पत्र लिखिए।","बिजली की समस्या के संबंध में विद्युत अधिकारी को पत्र लिखिए।","अपने मित्र को परीक्षा की तैयारी के बारे में पत्र लिखिए।","विद्यालय में खेल सामग्री उपलब्ध कराने हेतु प्रधानाचार्य को आवेदन लिखिए।","आदिकाल की प्रमुख विशेषताएँ लिखिए।","भक्तिकाल को हिन्दी साहित्य का स्वर्ण युग क्यों कहा जाता है?","कबीरदास की काव्यगत विशेषताएँ लिखिए।","तुलसीदास का साहित्यिक परिचय लिखिए।","सूरदास का साहित्यिक परिचय लिखिए।","रसखान का साहित्यिक परिचय लिखिए।","मीराबाई की काव्यगत विशेषताएँ लिखिए।","बिहारी का साहित्यिक परिचय लिखिए।","रीतिकाल की प्रमुख काव्य प्रवृत्तियाँ लिखिए।","आधुनिक हिन्दी साहित्य की प्रमुख विशेषताएँ लिखिए।","स्थायी भाव किसे कहते हैं?","विभाव, अनुभाव और संचारी भाव की परिभाषा लिखिए।","शृंगार रस के भेद लिखिए।","हास्य रस की परिभाषा एवं उदाहरण लिखिए।","अनुप्रास अलंकार की परिभाषा एवं उदाहरण लिखिए।","यमक अलंकार की परिभाषा एवं उदाहरण लिखिए।","श्लेष अलंकार की परिभाषा एवं उदाहरण लिखिए।","मानवीकरण अलंकार की परिभाषा एवं उदाहरण लिखिए।","सोरठा छंद का लक्षण लिखिए।","रोला छंद का लक्षण लिखिए।","संधि के प्रमुख भेद उदाहरण सहित लिखिए।","स्वर संधि किसे कहते हैं?","व्यंजन संधि किसे कहते हैं?","विसर्ग संधि किसे कहते हैं?","तत्पुरुष समास की परिभाषा लिखिए।","द्वंद्व समास की परिभाषा लिखिए।","बहुव्रीहि समास की परिभाषा लिखिए।","द्विगु समास की परिभाषा लिखिए।","कर्मधारय समास की परिभाषा लिखिए।","उपसर्ग के भेद उदाहरण सहित लिखिए।","महँगाई की समस्या पर निबंध लिखिए।","भ्रष्टाचार पर निबंध लिखिए।","शिक्षा का महत्व पर निबंध लिखिए।","स्वच्छ भारत अभियान पर निबंध लिखिए।","जनसंख्या वृद्धि की समस्या पर निबंध लिखिए।","ग्रामीण जीवन पर निबंध लिखिए।","सड़क दुर्घटनाओं की समस्या पर निबंध लिखिए।","अपने मित्र को जन्मदिन की बधाई देते हुए पत्र लिखिए।","मोहल्ले की सफाई के लिए नगर पालिका अधिकारी को पत्र लिखिए।","पुस्तकालय में नई पुस्तकें मँगवाने के लिए प्रधानाचार्य को आवेदन लिखिए।","हिन्दी साहित्य के चार प्रमुख कालों के नाम लिखिए।","आदिकाल को वीरगाथा काल क्यों कहा जाता है?","कबीरदास की भाषा-शैली की विशेषताएँ लिखिए।","सूरदास के काव्य में वात्सल्य रस का वर्णन कीजिए।","तुलसीदास की भक्ति भावना पर प्रकाश डालिए।","मीराबाई के काव्य में कृष्ण भक्ति का वर्णन कीजिए।","रसखान की कृष्ण भक्ति का वर्णन कीजिए।","बिहारी की काव्यगत विशेषताएँ लिखिए।","मैथिलीशरण गुप्त का साहित्यिक परिचय लिखिए।","रामधारी सिंह दिनकर की राष्ट्रीय भावना पर प्रकाश डालिए।","करुण रस की परिभाषा एवं उदाहरण लिखिए।","अद्भुत रस की परिभाषा एवं उदाहरण लिखिए।","रौद्र रस की परिभाषा एवं उदाहरण लिखिए।","शांत रस की परिभाषा एवं उदाहरण लिखिए।","उत्प्रेक्षा अलंकार की परिभाषा एवं उदाहरण लिखिए।","अतिशयोक्ति अलंकार की परिभाषा एवं उदाहरण लिखिए।","अनुप्रास और यमक अलंकार में अंतर लिखिए।","उपमा और उत्प्रेक्षा अलंकार में अंतर लिखिए।","दोहा छंद का लक्षण लिखिए।","चौपाई छंद का लक्षण लिखिए।","वाक्य के प्रमुख अंग कौन-कौन से हैं?","सरल, संयुक्त और मिश्र वाक्य में अंतर लिखिए।","पर्यायवाची शब्द किसे कहते हैं?","विलोम शब्द किसे कहते हैं?","अनेकार्थी शब्द किसे कहते हैं?","समोच्चरित भिन्नार्थक शब्द किसे कहते हैं?","मुहावरों का अर्थ लिखकर वाक्य में प्रयोग कीजिए।","लोकोक्तियों का अर्थ लिखिए।","वाक्य परिवर्तन कीजिए।","अशुद्ध वाक्यों को शुद्ध कीजिए।","डिजिटल इंडिया पर निबंध लिखिए।","विज्ञान और मानव जीवन पर निबंध लिखिए।","महिला शिक्षा का महत्व पर निबंध लिखिए।","पर्यावरण संरक्षण पर निबंध लिखिए।","आतंकवाद: एक वैश्विक समस्या पर निबंध लिखिए।","किसान का जीवन पर निबंध लिखिए।","विद्यार्थी और राजनीति पर निबंध लिखिए।","अपने छोटे भाई को समय का सदुपयोग करने की सलाह देते हुए पत्र लिखिए।","समाचार-पत्र के संपादक को जलभराव की समस्या के संबंध में पत्र लिखिए।","प्रधानाचार्य को चरित्र प्रमाण-पत्र प्राप्त करने हेतु आवेदन लिखिए।"
 ];
 
-function showBoard(b){curBoard=b;curPaper=PAPERS[b][curClass][0];document.getElementById('btn-up').classList.toggle('active',b=='up');document.getElementById('btn-cbse').classList.toggle('active',b=='cbse');renderAll();}
-function showClass(c){curClass=c;curPaper=PAPERS[curBoard][c][0];document.getElementById('c10-btn').classList.toggle('active',c=='10');document.getElementById('c12-btn').classList.toggle('active',c=='12');renderAll();}
-function setPaper(p){curPaper=p;renderAll();}
-
 function renderAll(){
-  // PAPER BUTTONS
+  document.getElementById('btn-up').className = 'board-btn' + (curBoard=='up' ? ' active' : '');
+  document.getElementById('btn-cbse').className = 'board-btn' + (curBoard=='cbse' ? ' active' : '');
+  document.getElementById('c10-btn').className = 'class-btn' + (curClass=='10' ? ' active' : '');
+  document.getElementById('c12-btn').className = 'class-btn' + (curClass=='12' ? ' active' : '');
+
   let papers = PAPERS[curBoard][curClass];
   let ph = "";
-  papers.forEach(p=>{
-    let label = p;
-    if(curBoard=='up' && curClass=='12' && p=='सामान्य हिन्दी') label = '📚 सामान्य हिन्दी - 160 Questions';
-    ph += `<button class="paper-btn ${p==curPaper?'active':''}" style="margin-bottom:8px" onclick="setPaper('${p}')">${label}</button>`;
-  });
+  for(let i=0; i<papers.length; i++){
+    let label = papers[i];
+    if(curBoard=='up' && curClass=='12' && i==0) label = '📚 सामान्य हिन्दी - 160 Questions';
+    ph += '<button class="paper-btn' + (i==curPaperIndex ? ' active' : '') + '" data-index="'+i+'">' + label + '</button>';
+  }
   document.getElementById('paper-box').innerHTML = ph;
 
+  let btns = document.getElementById('paper-box').getElementsByTagName('button');
+  for(let i=0; i<btns.length; i++){
+    btns[i].onclick = function(){ curPaperIndex = parseInt(this.getAttribute('data-index')); renderAll(); };
+  }
+
+  let curPaper = papers[curPaperIndex];
   let boardName = curBoard=='up' ? 'UP Board' : 'CBSE Board';
- 
+  let html = "";
+
+  if(curBoard=='up' && curClass=='12' && curPaperIndex==0){
+    html += '<div class="q-box" style="background:#fff3e0;border:2px solid #ff6b00;text-align:center"><b style="font-size:19px">🔥 UP Board 2027 – कक्षा 12वीं सामान्य हिन्दी</b><br>160 महत्वपूर्ण प्रश्न – बिना उत्तर</div><div class="q-box">';
+    for(let i=0; i<hindi12Questions.length; i++){ html += '<div class="q-item"><span>'+(i+1)+'.</span> '+hindi12Questions[i]+'</div>'; }
+    html += '</div>';
+  } else {
+    html += '<div class="q-box" style="text-align:center"><b>'+boardName+' - Class '+curClass+' - '+curPaper+'</b><br>Paper jaldi aayega</div>';
+  }
+  for(let year=2025; year>=2010; year--){
+    html += '<div class="card"><div><b>'+boardName+' Class '+curClass+' - '+curPaper+' - '+year+'</b></div><a class="btn" href="https://upmsp.edu.in/" target="_blank">Download</a></div>';
+  }
+  document.getElementById('content').innerHTML = html;
+}
+
+document.getElementById('btn-up').onclick = function(){ curBoard='up'; curPaperIndex=0; renderAll(); };
+document.getElementById('btn-cbse').onclick = function(){ curBoard='cbse'; curPaperIndex=0; renderAll(); };
+document.getElementById('c10-btn').onclick = function(){ curClass='10'; curPaperIndex=0; renderAll(); };
+document.getElementById('c12-btn').onclick = function(){ curClass='12'; curPaperIndex=0; renderAll(); };
+
+renderAll();
+</script>
+</body>
+</html>
