@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kambojrajankamboj001.github.io/rajan-ai-previous-paper/sitemap.xml
