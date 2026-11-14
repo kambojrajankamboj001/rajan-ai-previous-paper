@@ -7,30 +7,20 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
 body{background:#f2f4f8}
-.top{background:#0b3d91;color:white;padding:22px 15px;text-align:center}
-.top h1{font-size:28px}
+.top{background:#0b3d91;color:white;padding:25px 15px;text-align:center}
+.top h1{font-size:30px}
 .top p{font-size:14px;opacity:0.9;margin-top:5px}
-.search-box{padding:15px;text-align:center}
-.search-box input{width:95%;max-width:500px;padding:12px;border-radius:25px;border:1px solid #ccc;font-size:16px;outline:none}
-.boards{display:flex;gap:12px;padding:5px 15px;max-width:600px;margin:auto}
-.board-btn{flex:1;padding:18px 10px;border-radius:14px;border:none;cursor:pointer;text-align:center;box-shadow:0 3px 8px #00000020;background:white}
-.board-btn b{font-size:18px;display:block}
+.boards{display:flex;gap:12px;padding:20px 15px;max-width:600px;margin:auto}
+.board-btn{flex:1;padding:22px 10px;border-radius:16px;border:none;cursor:pointer;text-align:center;box-shadow:0 3px 10px #00000020;background:white}
+.board-btn b{font-size:20px;display:block}
 .board-btn span{font-size:12px;color:#666}
 .board-btn.active{background:#0b3d91;color:white}
 .board-btn.active span{color:#dbeafe}
-.sub-filter{display:flex;gap:8px;justify-content:center;margin:10px 15px 0;flex-wrap:wrap}
-.sub-filter button{padding:8px 16px;border-radius:20px;border:1px solid #0b3d91;background:white;color:#0b3d91;font-weight:bold;cursor:pointer}
-.sub-filter button.active{background:#0b3d91;color:white}
-.class-filter{display:flex;gap:8px;justify-content:center;margin:10px 15px 0;flex-wrap:wrap}
-.class-filter button{padding:9px 20px;border-radius:20px;border:1px solid #ff6b00;background:white;color:#ff6b00;font-weight:bold;cursor:pointer}
-.class-filter button.active{background:#ff6b00;color:white}
-.container{padding:15px;max-width:800px;margin:auto}
-.section-title{font-size:19px;font-weight:bold;margin:15px 0 10px 2px}
+.container{padding:0 15px 15px;max-width:800px;margin:auto}
+.section-title{font-size:19px;font-weight:bold;margin:5px 0 12px 2px}
 .card{background:white;border-radius:12px;padding:15px;margin-bottom:12px;box-shadow:0 2px 8px #00000010;display:flex;justify-content:space-between;align-items:center;gap:10px}
 .card h3{font-size:16px}
 .card p{font-size:13px;color:#666;margin-top:4px}
-.badge{background:#FFF3CD;color:#856404;font-size:11px;padding:3px 8px;border-radius:10px;font-weight:bold;margin-left:5px}
-.badge10{background:#D1ECF1;color:#0C5460}
 .btn{background:#25D366;color:white;text-decoration:none;padding:10px 16px;border-radius:8px;font-weight:bold;font-size:14px;white-space:nowrap}
 .footer{text-align:center;padding:20px;color:#888;font-size:13px}
 </style>
@@ -38,19 +28,4 @@ body{background:#f2f4f8}
 <body>
 
 <div class="top">
-  <h1>📚 RAJAN AI</h1>
-  <p>Previous Year Papers - Class 10 & 12</p>
-  <p style="font-size:12px;margin-top:8px">Made by Rajan Kamboj | Bijnor, UP</p>
-</div>
-
-<div class="search-box">
-  <input type="text" id="search" onkeyup="searchPaper()" placeholder="🔍 Paper dhoondho... jaise Hindi, Maths, 2024">
-</div>
-
-<!-- 1. BOARD SELECT -->
-<div class="boards">
-  <button class="board-btn active" id="btn-up" onclick="showBoard('up')"><b>🏫 UP BOARD</b><span>UPMSP Prayagraj</span></button>
-  <button class="board-btn" id="btn-cbse" onclick="showBoard('cbse')"><b>🎓 CBSE BOARD</b><span>Central Board</span></button>
-</div>
-
-<!-- 2. UP ME BIJNOR OPTION - SIRF UP ME DI
+  <h1>📚 RAJAN
