@@ -10,22 +10,95 @@ body{background:#f2f4f8}
 .top{background:#0b3d91;color:white;padding:25px 15px;text-align:center}
 .top h1{font-size:30px}
 .top p{font-size:14px;opacity:0.9;margin-top:5px}
-.boards{display:flex;gap:12px;padding:20px 15px;max-width:600px;margin:auto}
+.boards{display:flex;gap:12px;padding:20px 15px 10px;max-width:600px;margin:auto}
 .board-btn{flex:1;padding:22px 10px;border-radius:16px;border:none;cursor:pointer;text-align:center;box-shadow:0 3px 10px #00000020;background:white}
 .board-btn b{font-size:20px;display:block}
 .board-btn span{font-size:12px;color:#666}
 .board-btn.active{background:#0b3d91;color:white}
 .board-btn.active span{color:#dbeafe}
+.class-box{display:flex;gap:10px;padding:5px 15px 10px;max-width:600px;margin:auto}
+.class-btn{flex:1;padding:14px;border-radius:12px;border:1px solid #ff6b00;background:white;color:#ff6b00;font-weight:bold;cursor:pointer;font-size:16px}
+.class-btn.active{background:#ff6b00;color:white}
 .container{padding:0 15px 15px;max-width:800px;margin:auto}
-.section-title{font-size:19px;font-weight:bold;margin:5px 0 12px 2px}
-.card{background:white;border-radius:12px;padding:15px;margin-bottom:12px;box-shadow:0 2px 8px #00000010;display:flex;justify-content:space-between;align-items:center;gap:10px}
-.card h3{font-size:16px}
-.card p{font-size:13px;color:#666;margin-top:4px}
-.btn{background:#25D366;color:white;text-decoration:none;padding:10px 16px;border-radius:8px;font-weight:bold;font-size:14px;white-space:nowrap}
+.section-title{font-size:19px;font-weight:bold;margin:10px 0 12px 2px}
+.year-title{background:#0b3d91;color:white;padding:8px 12px;border-radius:8px;font-weight:bold;margin:18px 0 10px;font-size:16px}
+.card{background:white;border-radius:12px;padding:14px;margin-bottom:10px;box-shadow:0 2px 8px #00000010;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.card h3{font-size:15px}
+.card p{font-size:12px;color:#666;margin-top:3px}
+.btn{background:#25D366;color:white;text-decoration:none;padding:9px 14px;border-radius:8px;font-weight:bold;font-size:13px;white-space:nowrap}
 .footer{text-align:center;padding:20px;color:#888;font-size:13px}
 </style>
 </head>
 <body>
 
 <div class="top">
-  <h1>📚 RAJAN
+  <h1>📚 RAJAN AI</h1>
+  <p>Previous Year Papers - Free Download</p>
+  <p style="font-size:12px;margin-top:8px">Made by Rajan Kamboj</p>
+</div>
+
+<!-- 2 BADE OPTION -->
+<div class="boards">
+  <button class="board-btn" id="btn-up" onclick="showBoard('up')"><b>🏫 UP BOARD</b><span>Class 10 & 12</span></button>
+  <button class="board-btn active" id="btn-cbse" onclick="showBoard('cbse')"><b>🎓 CBSE BOARD</b><span>Maths Side | 2010-2025</span></button>
+</div>
+
+<!-- CBSE KE ANDAR CLASS 10 / 12 -->
+<div class="class-box" id="cbse-class-box">
+  <button class="class-btn active" id="c10-btn" onclick="showCBSEClass('10')">📘 Class 10 - 64 Papers</button>
+  <button class="class-btn" id="c12-btn" onclick="showCBSEClass('12')">📗 Class 12 - 80 Papers</button>
+</div>
+
+<div class="container">
+
+  <!-- UP BOARD -->
+  <div id="section-up" style="display:none">
+    <div class="section-title">📘 UP Board Papers</div>
+    <div class="card">
+      <div><h3>UP Board Class 10 - Hindi - 2024</h3><p>UP Board - Bijnor | Hindi Medium | PDF</p></div>
+      <a class="btn" href="LINK-YAHAN-DALO" target="_blank">Download</a>
+    </div>
+    <div class="card">
+      <div><h3>UP Board Class 12 - Maths - 2024</h3><p>UP Board - Bijnor | Hindi Medium | PDF</p></div>
+      <a class="btn" href="LINK-YAHAN-DALO" target="_blank">Download</a>
+    </div>
+  </div>
+
+  <!-- CBSE BOARD -->
+  <div id="section-cbse">
+    <div class="section-title" id="cbse-title">📗 CBSE Board - Class 10 - Maths Side - Total 64 Papers (2010 - 2025)</div>
+    <div id="cbseList"></div>
+  </div>
+
+</div>
+
+<div class="footer">© 2026 Rajan AI - All Papers Free</div>
+
+<script>
+let curBoard='cbse', curCBSEClass='10';
+
+function showBoard(board){
+  curBoard=board;
+  document.getElementById('section-up').style.display = board=='up' ? 'block' : 'none';
+  document.getElementById('section-cbse').style.display = board=='cbse' ? 'block' : 'none';
+  document.getElementById('cbse-class-box').style.display = board=='cbse' ? 'flex' : 'none';
+  document.getElementById('btn-up').classList.toggle('active', board=='up');
+  document.getElementById('btn-cbse').classList.toggle('active', board=='cbse');
+}
+
+function showCBSEClass(cls){
+  curCBSEClass=cls;
+  document.getElementById('c10-btn').classList.toggle('active', cls=='10');
+  document.getElementById('c12-btn').classList.toggle('active', cls=='12');
+  document.getElementById('cbse-title').innerText = cls=='10' ? '📗 CBSE Board - Class 10 - Maths Side - Total 64 Papers (2010 - 2025)' : '📗 CBSE Board - Class 12 - Maths Side - Total 80 Papers (2010 - 2025)';
+  renderCBSE();
+}
+
+function renderCBSE(){
+  let html="";
+  for(let year=2025; year>=2010; year--){
+    html += `<div class="year-title">📅 Year ${year}</div>`;
+    if(curCBSEClass=='10'){
+      // CLASS 10 - 4 SUBJECT - TOTAL 64
+      html += `
+      <div class="card"><div><h3>CBSE Class 10 - Maths - ${year}</h3><p>CBSE | Maths Side | PDF</
