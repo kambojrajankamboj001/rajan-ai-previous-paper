@@ -620,7 +620,342 @@ html+='</div>';document.getElementById('content').innerHTML=html;
 document.getElementById('c10-btn').onclick=function(){curClass='10';curSub=SUBJECTS['10'][0];renderAll();};
 document.getElementById('c12-btn').onclick=function(){curClass='12';curSub=SUBJECTS['12'][0];renderAll();};
 renderAll();
+</script> 
+  <!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rajan AI</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#f2f4f8}
+.top{background:#0b3d91;color:white;padding:20px;text-align:center}
+.top h1{font-size:26px}
+.label{text-align:center;font-weight:bold;margin:14px 0 5px}
+.class-box{display:flex;gap:10px;padding:5px 15px;max-width:600px;margin:auto}
+.class-btn{flex:1;padding:15px;border-radius:12px;border:2px solid #ff6b00;background:white;color:#ff6b00;font-weight:bold;cursor:pointer;font-size:16px}
+.class-btn.active{background:#ff6b00;color:white}
+.sub-box{display:flex;gap:8px;padding:5px 15px;max-width:700px;margin:auto;flex-wrap:wrap;justify-content:center}
+.sub-btn{padding:11px 16px;border-radius:20px;border:1px solid #00a651;background:white;color:#00a651;font-weight:bold;cursor:pointer}
+.sub-btn.active{background:#00a651;color:white}
+.container{padding:10px 15px;max-width:800px;margin:auto}
+.title-box{background:#fff3e0;border:2px solid #ff6b00;border-radius:12px;padding:15px;text-align:center;margin-bottom:12px}
+.q-box{background:white;border-radius:12px;padding:15px}
+.q-item{padding:13px 5px;border-bottom:1px solid #eee;line-height:1.7}
+.q{font-weight:bold;font-size:15px}.a{color:#0a7a3a;font-size:14px;margin-top:5px}
+.num{color:#ff6b00}.count{text-align:center;color:#666;margin:10px;font-weight:bold}
+.note{background:#fff3cd;border:1px solid #ffc107;border-radius:10px;padding:12px;margin-bottom:12px;font-size:13px;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="top"><h1>📚 RAJAN AI</h1><p>UP Board - Class 10 & 12 - 200 Long Questions Har Subject</p></div>
+<div class="label">👇 1. CLASS CHUNO</div>
+<div class="class-box"><button class="class-btn active" id="c10-btn">📘 Class 10</button><button class="class-btn" id="c12-btn">📗 Class 12</button></div>
+<div class="label">👇 2. SUBJECT CHUNO</div>
+<div class="sub-box" id="sub-box"></div>
+<div class="container"><div id="content"></div></div>
+<script>
+var curClass='10',curSub='सामान्य हिन्दी';
+var SUBJECTS={'10':['सामान्य हिन्दी','English','Maths','Science','Social Science','Drawing'],'12':['सामान्य हिन्दी','English','Maths','Physics','Chemistry']};
+
+var HINDI10=["मुंशी प्रेमचन्द का साहित्यिक परिचय देते हुए उनकी प्रमुख रचनाओं का वर्णन कीजिए।","भारतेंदु हरिश्चन्द्र का जीवन परिचय एवं साहित्यिक योगदान लिखिए।","आचार्य रामचन्द्र शुक्ल का साहित्यिक परिचय एवं प्रमुख रचनाएँ लिखिए।","महावीर प्रसाद द्विवेदी का जीवन परिचय एवं हिन्दी साहित्य में योगदान लिखिए।","हजारी प्रसाद द्विवेदी का साहित्यिक परिचय लिखिए।","डॉ. राजेन्द्र प्रसाद का जीवन परिचय एवं देश के प्रति योगदान लिखिए।","महात्मा गांधी का जीवन परिचय एवं उनके विचारों का वर्णन कीजिए।","डॉ. भीमराव अम्बेडकर का जीवन परिचय एवं सामाजिक योगदान लिखिए।","रामधारी सिंह दिनकर का जीवन परिचय एवं साहित्यिक योगदान लिखिए।","हरिशंकर परसाई का जीवन परिचय एवं व्यंग्य साहित्य में योगदान लिखिए।","लेखक की दृष्टि में शिक्षा का क्या महत्व है? विस्तार से समझाइए।","साहित्य समाज का दर्पण है। इस कथन की व्याख्या कीजिए।","विद्यार्थी जीवन में अनुशासन का महत्व समझाइए।","मनुष्य के जीवन में परिश्रम का महत्व लिखिए।","समय का सदुपयोग क्यों आवश्यक है? समझाइए।","भारतीय संस्कृति की प्रमुख विशेषताओं का वर्णन कीजिए।","देशभक्ति का अर्थ एवं महत्व स्पष्ट कीजिए।","पर्यावरण संरक्षण की आवश्यकता पर निबंधात्मक उत्तर लिखिए।","ग्रामीण जीवन की प्रमुख समस्याओं का वर्णन कीजिए।","नारी शिक्षा का महत्व स्पष्ट कीजिए।","विज्ञान के कारण मानव जीवन में आए परिवर्तनों का वर्णन कीजिए।","आधुनिक जीवन में इंटरनेट की उपयोगिता समझाइए।","स्वच्छता का हमारे जीवन में क्या महत्व है?","अच्छे नागरिक के प्रमुख गुणों का वर्णन कीजिए।","सामाजिक एकता की आवश्यकता एवं महत्व समझाइए।","पुस्तकें मनुष्य की सच्ची मित्र क्यों कहलाती हैं?","नैतिक शिक्षा का विद्यार्थी जीवन में महत्व लिखिए।","मानव जीवन में प्रकृति का महत्व स्पष्ट कीजिए।","परोपकार की भावना मनुष्य के लिए क्यों आवश्यक है?","आत्मनिर्भरता का महत्व समझाइए।","बेरोजगारी की समस्या के कारण एवं समाधान लिखिए।","भ्रष्टाचार के कारण एवं उसके दुष्परिणामों का वर्णन कीजिए।","जल संरक्षण की आवश्यकता एवं उपाय लिखिए।","वृक्षों का मानव जीवन में महत्व समझाइए।","संयुक्त परिवार और एकल परिवार में अंतर स्पष्ट कीजिए।","राष्ट्रीय एकता के महत्व का वर्णन कीजिए।","समाचार पत्रों की उपयोगिता एवं महत्व लिखिए।","खेलकूद का विद्यार्थी जीवन में महत्व समझाइए।","स्वावलंबन से क्या अभिप्राय है? इसके महत्व को समझाइए।","मानव जीवन में सच्चाई और ईमानदारी का महत्व लिखिए।","कबीरदास का जीवन परिचय एवं साहित्यिक योगदान लिखिए।","तुलसीदास का जीवन परिचय एवं प्रमुख रचनाओं का वर्णन कीजिए।","सूरदास का जीवन परिचय एवं काव्यगत विशेषताएँ लिखिए।","रहीम का जीवन परिचय एवं उनकी काव्यगत विशेषताएँ लिखिए।","रसखान का जीवन परिचय एवं साहित्यिक योगदान लिखिए।","बिहारी का जीवन परिचय एवं प्रमुख रचनाओं का उल्लेख कीजिए।","मीराबाई का जीवन परिचय एवं कृष्ण भक्ति का वर्णन कीजिए।","मैथिलीशरण गुप्त का जीवन परिचय एवं साहित्यिक योगदान लिखिए।","सुमित्रानंदन पंत का जीवन परिचय एवं काव्यगत विशेषताएँ लिखिए।","महादेवी वर्मा का जीवन परिचय एवं साहित्यिक योगदान लिखिए।","जयशंकर प्रसाद का साहित्यिक परिचय एवं प्रमुख रचनाएँ लिखिए।","सूर्यकांत त्रिपाठी निराला का जीवन परिचय एवं काव्यगत विशेषताएँ लिखिए।","रामधारी सिंह दिनकर की काव्यगत विशेषताओं का वर्णन कीजिए।","कबीरदास की भाषा शैली एवं सामाजिक विचारों का वर्णन कीजिए।","तुलसीदास की भक्ति भावना का वर्णन कीजिए।","सूरदास की वात्सल्य भावना का वर्णन कीजिए।","रहीम के दोहों से मिलने वाली शिक्षाओं का वर्णन कीजिए।","मीराबाई की कृष्ण भक्ति का वर्णन कीजिए।","महादेवी वर्मा की छायावादी काव्य विशेषताएँ लिखिए।","आधुनिक हिन्दी कविता की प्रमुख विशेषताओं का वर्णन कीजिए।","भक्तिकाल की प्रमुख विशेषताएँ लिखिए।","रीतिकाल की प्रमुख विशेषताओं का वर्णन कीजिए।","छायावाद की प्रमुख विशेषताएँ समझाइए।","प्रगतिवादी काव्य की विशेषताएँ लिखिए।","कबीर की शिक्षाओं का वर्तमान जीवन में महत्व स्पष्ट कीजिए।","तुलसीदास के काव्य में लोकमंगल की भावना का वर्णन कीजिए।","सूरदास के काव्य में कृष्ण की बाल लीलाओं का वर्णन कीजिए।","रहीम के दोहों में निहित जीवन दर्शन समझाइए।","मीरा के पदों में भक्ति भावना का वर्णन कीजिए।","प्रकृति चित्रण का काव्य में महत्व समझाइए।","वीर रस की कविताओं की प्रमुख विशेषताएँ लिखिए।","करुण रस की कविताओं का भाव स्पष्ट कीजिए।","कवि और लेखक में अंतर स्पष्ट कीजिए।","भक्तिकालीन साहित्य में सामाजिक सुधार की भावना का वर्णन कीजिए।","हिन्दी कविता के विकास का क्रमबद्ध वर्णन कीजिए।","राष्ट्रप्रेम की भावना हिन्दी कविता में किस प्रकार व्यक्त हुई है?","मानवता का संदेश देने वाली कविताओं की विशेषताएँ लिखिए।","कवियों ने प्रकृति को किस प्रकार चित्रित किया है?","हिन्दी साहित्य में भक्ति आंदोलन का महत्व समझाइए।","आधुनिक हिन्दी कवियों के साहित्यिक योगदान का वर्णन कीजिए।","संज्ञा की परिभाषा देते हुए उसके सभी भेद उदाहरण सहित समझाइए।","सर्वनाम की परिभाषा एवं उसके भेद उदाहरण सहित लिखिए।","विशेषण किसे कहते हैं? इसके सभी भेद उदाहरण सहित समझाइए।","क्रिया की परिभाषा देते हुए उसके भेद उदाहरण सहित लिखिए।","काल किसे कहते हैं? इसके सभी भेद उदाहरण सहित समझाइए।","वाच्य की परिभाषा एवं उसके भेद उदाहरण सहित लिखिए।","संधि की परिभाषा देते हुए उसके प्रमुख भेद समझाइए।","स्वर संधि की परिभाषा एवं उसके भेद उदाहरण सहित लिखिए।","व्यंजन संधि किसे कहते हैं? उदाहरण सहित समझाइए।","विसर्ग संधि की परिभाषा एवं उदाहरण लिखिए।","समास की परिभाषा देते हुए उसके सभी भेद समझाइए।","तत्पुरुष समास की परिभाषा एवं उदाहरण लिखिए।","कर्मधारय समास की परिभाषा एवं उदाहरण लिखिए।","द्वंद्व समास की परिभाषा एवं उदाहरण लिखिए।","बहुव्रीहि समास किसे कहते हैं? उदाहरण सहित समझाइए।","अव्ययीभाव समास की परिभाषा एवं उदाहरण लिखिए।","द्विगु समास की परिभाषा एवं उदाहरण लिखिए।","उपसर्ग किसे कहते हैं? उदाहरण सहित समझाइए।","प्रत्यय किसे कहते हैं? इसके भेद उदाहरण सहित लिखिए।","तत्सम और तद्भव शब्दों में अंतर उदाहरण सहित लिखिए।","देशज और विदेशज शब्दों की परिभाषा उदाहरण सहित लिखिए।","पर्यायवाची शब्द किसे कहते हैं? उदाहरण सहित लिखिए।","विलोम शब्द किसे कहते हैं? उदाहरण सहित समझाइए।","अनेकार्थी शब्द किसे कहते हैं? उदाहरण सहित लिखिए।","अनेक शब्दों के लिए एक शब्द लिखने का अर्थ समझाइए।","मुहावरे किसे कहते हैं? दस मुहावरों के अर्थ एवं वाक्य लिखिए।","लोकोक्ति किसे कहते हैं? दस लोकोक्तियों के अर्थ लिखिए।","रस की परिभाषा देते हुए उसके प्रमुख भेद लिखिए।","श्रृंगार रस की परिभाषा एवं उदाहरण लिखिए।","वीर रस की परिभाषा एवं उदाहरण लिखिए।","करुण रस की परिभाषा एवं उदाहरण लिखिए।","हास्य रस की परिभाषा एवं उदाहरण लिखिए।","रौद्र रस की परिभाषा एवं उदाहरण लिखिए।","शांत रस की परिभाषा एवं उदाहरण लिखिए।","वात्सल्य रस किसे कहते हैं? उदाहरण सहित समझाइए।","अलंकार की परिभाषा देते हुए उसके भेद लिखिए।","अनुप्रास अलंकार की परिभाषा एवं उदाहरण लिखिए।","उपमा अलंकार की परिभाषा एवं उदाहरण लिखिए।","रूपक अलंकार की परिभाषा एवं उदाहरण लिखिए।","उत्प्रेक्षा अलंकार की परिभाषा एवं उदाहरण लिखिए।","अतिशयोक्ति अलंकार की परिभाषा एवं उदाहरण लिखिए।","मानवीकरण अलंकार किसे कहते हैं? उदाहरण सहित समझाइए।","छंद की परिभाषा एवं उसके भेद लिखिए।","दोहा छंद की परिभाषा एवं उदाहरण लिखिए।","चौपाई छंद की परिभाषा एवं उदाहरण लिखिए।","सोरठा छंद की परिभाषा एवं उदाहरण लिखिए।","वाक्य की परिभाषा देते हुए उसके भेद लिखिए।","अर्थ के आधार पर वाक्य के भेद उदाहरण सहित समझाइए।","रचना के आधार पर वाक्य के भेद लिखिए।","सरल, संयुक्त और मिश्र वाक्य में अंतर स्पष्ट कीजिए।","विराम चिह्न किसे कहते हैं? इनके प्रकार एवं प्रयोग लिखिए।","वाक्य शुद्धि से क्या अभिप्राय है? उदाहरण सहित समझाइए।","शब्द शुद्धि की परिभाषा एवं उदाहरण लिखिए।","लिंग किसे कहते हैं? इसके भेद उदाहरण सहित लिखिए।","वचन किसे कहते हैं? इसके भेद उदाहरण सहित समझाइए।","कारक किसे कहते हैं? इसके भेद एवं चिह्न लिखिए।","संधि और समास में अंतर स्पष्ट कीजिए।","उपसर्ग और प्रत्यय में अंतर उदाहरण सहित लिखिए।","शब्द और पद में अंतर स्पष्ट कीजिए।","भाषा और बोली में अंतर उदाहरण सहित लिखिए।","स्वच्छ भारत अभियान पर निबंध लिखिए।","पर्यावरण प्रदूषण पर निबंध लिखिए।","विद्यार्थी जीवन पर निबंध लिखिए।","विज्ञान के चमत्कार पर निबंध लिखिए।","इंटरनेट के लाभ एवं हानियों पर निबंध लिखिए।","समय का महत्व पर निबंध लिखिए।","वृक्षारोपण का महत्व पर निबंध लिखिए।","महिला शिक्षा पर निबंध लिखिए।","बेरोजगारी की समस्या पर निबंध लिखिए।","जल संरक्षण पर निबंध लिखिए।","अनुशासन का महत्व पर निबंध लिखिए।","मेरा प्रिय शिक्षक पर निबंध लिखिए।","राष्ट्रपिता महात्मा गांधी पर निबंध लिखिए।","गणतंत्र दिवस पर निबंध लिखिए।","स्वतंत्रता दिवस पर निबंध लिखिए।","मेरा प्रिय त्योहार पर निबंध लिखिए।","मेरा विद्यालय पर निबंध लिखिए।","मेरा प्रिय मित्र पर निबंध लिखिए।","मेरा प्रिय खेल पर निबंध लिखिए।","मोबाइल फोन के लाभ एवं हानियों पर निबंध लिखिए।","जनसंख्या वृद्धि की समस्या पर निबंध लिखिए।","आतंकवाद की समस्या पर निबंध लिखिए।","राष्ट्रीय एकता पर निबंध लिखिए।","किसान का महत्व पर निबंध लिखिए।","पुस्तकालय का महत्व पर निबंध लिखिए।","शिक्षा का अधिकार पर निबंध लिखिए।","योग का महत्व पर निबंध लिखिए।","स्वास्थ्य ही धन है विषय पर निबंध लिखिए।","मेरा भारत महान पर निबंध लिखिए।","डिजिटल इंडिया पर निबंध लिखिए।","विद्यालय के प्रधानाचार्य को बीमारी के कारण अवकाश हेतु प्रार्थना पत्र लिखिए।","विद्यालय के प्रधानाचार्य को शुल्क माफी के लिए प्रार्थना पत्र लिखिए।","विद्यालय में पुस्तकालय की व्यवस्था कराने हेतु प्रार्थना पत्र लिखिए।","विद्यालय में खेल सामग्री उपलब्ध कराने हेतु प्रार्थना पत्र लिखिए।","विद्यालय में स्वच्छ पेयजल की व्यवस्था हेतु प्रार्थना पत्र लिखिए।","अपने मित्र को परीक्षा में सफलता पर बधाई पत्र लिखिए।","अपने मित्र को जन्मदिन की शुभकामनाएँ देते हुए पत्र लिखिए।","अपने छोटे भाई को पढ़ाई का महत्व समझाते हुए पत्र लिखिए।","अपने पिता को अपनी पढ़ाई की प्रगति बताते हुए पत्र लिखिए।","अपने मित्र को ग्रीष्मावकाश में अपने घर बुलाने हेतु पत्र लिखिए।","नगर में गंदगी की समस्या के संबंध में समाचार पत्र के संपादक को पत्र लिखिए।","सड़क दुर्घटनाओं की समस्या के संबंध में संपादक को पत्र लिखिए।","बढ़ते प्रदूषण के संबंध में संपादक को पत्र लिखिए।","नगर में पेयजल की समस्या के संबंध में अधिकारी को पत्र लिखिए।","बिजली की अनियमित आपूर्ति के संबंध में अधिकारी को शिकायत पत्र लिखिए।","सूचना लेखन क्या है? विद्यालय में होने वाली खेल प्रतियोगिता की सूचना लिखिए।","विद्यालय में होने वाले वार्षिकोत्सव की सूचना तैयार कीजिए।","खोई हुई वस्तु के संबंध में विज्ञापन लिखिए।","किराए पर मकान देने के लिए विज्ञापन लिखिए।","पुस्तक मेले के आयोजन की सूचना लिखिए।","संवाद लेखन किसे कहते हैं? दो मित्रों के बीच परीक्षा की तैयारी पर संवाद लिखिए।","शिक्षक और विद्यार्थी के बीच अनुशासन पर संवाद लिखिए।","डॉक्टर और मरीज के बीच स्वास्थ्य संबंधी संवाद लिखिए।","दो मित्रों के बीच पर्यावरण संरक्षण पर संवाद लिखिए।","प्रधानाचार्य और विद्यार्थी के बीच अवकाश के लिए संवाद लिखिए।","संक्षेपण किसे कहते हैं? इसकी विशेषताएँ लिखिए।","सारांश लेखन की विधि एवं महत्व समझाइए।","अपठित गद्यांश को हल करने की विधि समझाइए।","अपठित पद्यांश का भावार्थ लिखने की विधि समझाइए।","अनुच्छेद लेखन की परिभाषा देते हुए इसकी प्रमुख विशेषताएँ लिखिए।"];
+
+var ENGLISH10=["Describe the character of Lencho.","Why did Lencho write a letter to God?","Describe the destruction caused by the hailstorm.","How did the postmaster help Lencho?","Why did Lencho call the post office employees a bunch of crooks?","What is the main message of the story? (A Letter to God)","Describe Lencho's faith in God.","Describe the inauguration ceremony of Nelson Mandela.","What does Mandela say about courage?","Explain Mandela's views on freedom.","What were the two obligations mentioned by Mandela?","Describe the sacrifices made by freedom fighters.","What is the meaning of courage according to Mandela?","Explain the message of the lesson - Nelson Mandela: Long Walk to Freedom.","Why was the young seagull afraid to fly?","How did the mother seagull encourage her young one?","Describe the first flight of the young seagull.","How did the young seagull overcome his fear?","Why was the pilot flying through the storm?","Describe the mysterious black aeroplane.","Who helped the pilot in the storm?","What is the message of the two stories? (Two Stories about Flying)","Why did Anne Frank decide to write a diary?","Describe the character of Anne Frank.","Why did Anne feel that paper had more patience than people?","How did Mr Keesing punish Anne?","How did Anne react to her teacher's punishment?","Describe the relationship between Anne and her teachers.","What do we learn from Anne's diary?","Describe the importance of bread in Goan life.","Describe the traditional baker of Goa.","Write about the famous tea gardens of Assam.","Describe the beauty of Coorg.","What are the special features of Coorg?","Describe the life and culture of the people of Coorg.","Why is Assam famous for tea?","What is the importance of traditional food in Goa?","How did the author get Mijbil?","Describe the character and habits of Mijbil.","How did Mijbil become friendly with the author?","Describe the journey of Mijbil to England.","What difficulties did the author face while travelling with Mijbil?","Why did the author love Mijbil?","Describe the character of Valli.","Why did Valli want to ride the bus?","How did Valli arrange money for her bus journey?","Describe Valli's first bus journey.","Why did Valli refuse to get off the bus?","What did Valli see during her journey?","What did Valli learn from her bus journey?","Describe the story of Gautama Buddha.","Why did Kisa Gotami go to Buddha?","How did Buddha teach Kisa Gotami the truth of life?","What is the truth about death according to Buddha?","Explain the message of the lesson - The Sermon at Benares.","What did Kisa Gotami learn from her experience?","Describe the character of Lomov.","Describe the character of Natalya.","Why did Lomov visit Chubukov's house?","What was the dispute between Lomov and Natalya?","Why did Lomov and Natalya quarrel over their dogs?","Describe the humorous situations in the play - The Proposal.","What is the main theme of The Proposal?","Explain the central idea of Dust of Snow.","How did the crow and the hemlock tree change the poet's mood?","Explain the message of Fire and Ice.","What do fire and ice symbolise in the poem?","Describe the central idea of A Tiger in the Zoo.","Compare a tiger in a zoo with a tiger in the forest.","Explain the message of How to Tell Wild Animals.","Describe the poet's feelings in The Ball Poem.","What lesson does the boy learn from losing his ball?","Explain the central idea of Amanda!","Why does Amanda want freedom?","Describe the central idea of Animals.","Why does the poet admire animals?","Explain the central idea of The Trees.","What do the trees symbolise in the poem?","Describe the central idea of Fog.","How does the poet compare fog with a cat?","Explain the message of The Tale of Custard the Dragon.","Describe the character of Custard the Dragon.","Explain the central idea of For Anne Gregory.","What does the poem teach us about inner beauty?","Describe the character of Tricki.","Why was Tricki ill?","How did Dr Herriot cure Tricki?","Describe Mrs Pumphrey's love for Tricki.","Why is the title A Triumph of Surgery appropriate?","Describe the character of Hari Singh.","Why did Hari Singh decide to work for Anil?","How did Anil trust Hari Singh?","Why did Hari Singh return the stolen money?","How did Anil change Hari Singh's life?","What is the main message of the story? (The Thief's Story)","Describe the character of Ausable.","How was Ausable different from other secret agents?","Who was Max and why did he visit Ausable?","How did Ausable get rid of Max?","Describe the role of intelligence in the story - The Midnight Visitor.","Why was Fowler surprised by Ausable?","What is the message of The Midnight Visitor?","Describe the character of Horace Danby.","Why did Horace Danby rob houses?","How did the lady deceive Horace Danby?","Why was Horace arrested?","What lesson do we learn from the story? (A Question of Trust)","Explain the title A Question of Trust.","Describe the character of Griffin.","Why did Griffin become invisible?","How did Griffin misuse his scientific discovery?","Describe the strange activities of Griffin.","Why was Griffin considered a lawless person?","What is the main message of the story? (Footprints Without Feet)","Describe the character of Richard Ebright.","How did Richard Ebright become a scientist?","What role did his mother play in his success?","Why was curiosity important in Ebright's life?","What qualities made Richard Ebright successful?","What lesson do we learn from his life? (The Making of a Scientist)","Describe the character of Matilda Loisel.","Why was Matilda unhappy with her life?","Why did Matilda borrow a necklace?","What happened to the necklace?","How did Matilda and her husband repay the debt?","What was the real truth about the necklace?","What is the main message of The Necklace?","Describe the character of the hack driver.","How did Lutkins deceive the young lawyer?","Why did the lawyer visit New Mullion?","Describe the lawyer's experience in the village.","What lesson does the story teach us? (The Hack Driver)","Describe the character of Bholi.","How did Bholi's teacher change her life?","Why did Bholi refuse to marry Bishamber?","Describe Bholi's transformation from a timid girl into a confident person.","What is the role of education in Bholi's life?","What is the main message of the story? (Bholi)","Describe the character of Think-Tank.","How did the Martians misunderstand books?","How did books save the Earth?","Describe the role of Noodle in the play.","What is the main theme of the play? (The Book That Saved the Earth)","What lesson do we learn from the story? (The Book That Saved the Earth)","Write a character sketch of Lencho.","Write a character sketch of Nelson Mandela.","Write a character sketch of Anne Frank.","Write a character sketch of Valli.","Write a character sketch of Kisa Gotami.","Write a character sketch of Lomov.","Write a character sketch of Natalya.","Write a character sketch of Ausable.","Write a character sketch of Max.","Write a character sketch of Hari Singh.","Write a character sketch of Anil.","Write a character sketch of Horace Danby.","Write a character sketch of Griffin.","Write a character sketch of Richard Ebright.","Write a character sketch of Matilda.","Write a character sketch of Bholi.","Write a character sketch of Dr Herriot.","Write a character sketch of Mrs Pumphrey.","Write a character sketch of Think-Tank.","Write a character sketch of Noodle.","How does faith help a person in difficult situations?","Why is freedom important for every human being?","How can fear be overcome through courage?","What is the importance of family support in life?","How does education bring positive changes in society?","Why should we respect animals?","Explain the importance of kindness and sympathy.","Why is honesty important in human life?","What is the importance of self-confidence?","How can hard work lead to success?","What is the importance of friendship?","Explain the importance of love and care in family life.","Why should we not judge people by their appearance?","What is the importance of scientific thinking?","How can intelligence solve difficult problems?","Why is greed harmful to human beings?","What is the importance of truth in life?","Explain the value of patience.","Why is education necessary for girls?","How does a teacher influence a student's life?","What is the importance of discipline?","How can we learn from our mistakes?","Why should we help poor and needy people?","What is the importance of nature in human life?","Explain the value of freedom and equality.","How does courage help us face difficulties?","Explain the theme of Dust of Snow.","Explain the theme of Fire and Ice.","Describe the feelings of the poet in A Tiger in the Zoo.","Explain the message of How to Tell Wild Animals.","What does the lost ball symbolise in The Ball Poem?","Explain Amanda's desire for freedom.","What does the poet learn from animals?","Explain the symbolic meaning of trees in The Trees.","Describe the central idea of Fog.","Explain the message of For Anne Gregory."];
+
+// ===== CLASS 10 MATHS - TERE WALE 200 =====
+var MATHS10=[
+"यूक्लिड विभाजन प्रमेयिका क्या है? उदाहरण सहित समझाइए।",
+"यूक्लिड विभाजन एल्गोरिथ्म द्वारा 135 और 225 का HCF ज्ञात कीजिए।",
+"96 और 404 का महत्तम समापवर्तक ज्ञात कीजिए।",
+"अभाज्य गुणनखंड विधि से 156 और 382 का HCF ज्ञात कीजिए।",
+"सिद्ध कीजिए कि √2 एक अपरिमेय संख्या है।",
+"सिद्ध कीजिए कि √3 एक अपरिमेय संख्या है।",
+"सिद्ध कीजिए कि √5 एक अपरिमेय संख्या है।",
+"दो संख्याओं का HCF और LCM ज्ञात करने की विधि समझाइए।",
+"12 और 18 का HCF तथा LCM ज्ञात कीजिए।",
+"क्या 7 × 11 × 13 + 13 एक भाज्य संख्या है? कारण दीजिए।",
+"बहुपद किसे कहते हैं? उदाहरण दीजिए।",
+"रैखिक बहुपद और द्विघात बहुपद में अंतर लिखिए।",
+"द्विघात बहुपद के शून्यक ज्ञात करने की विधि समझाइए।",
+"बहुपद x² − 5x + 6 के शून्यक ज्ञात कीजिए।",
+"बहुपद x² + 7x + 12 के शून्यक ज्ञात कीजिए।",
+"बहुपद 2x² − 7x + 3 के शून्यक ज्ञात कीजिए।",
+"शून्यकों और गुणांकों के बीच संबंध लिखिए।",
+"यदि α और β किसी द्विघात बहुपद के शून्यक हैं, तो उनका योग और गुणनफल लिखिए।",
+"x² − 9 के शून्यक ज्ञात कीजिए।",
+"बहुपद 3x² − 5x − 2 के शून्यक ज्ञात कीजिए।",
+"दो चरों वाले रैखिक समीकरण युग्म किसे कहते हैं?",
+"प्रतिस्थापन विधि से समीकरण हल कीजिए: x + y = 10, x − y = 2।",
+"विलोपन विधि से हल कीजिए: 2x + 3y = 13, 3x + 2y = 12।",
+"समीकरण 2x + y = 8 और x − y = 1 हल कीजिए।",
+"आलेखीय विधि द्वारा रैखिक समीकरण युग्म हल करने की विधि समझाइए।",
+"संगत और असंगत समीकरण किसे कहते हैं?",
+"अद्वितीय हल और अनंत हल की स्थितियाँ लिखिए।",
+"समीकरण 3x + 2y = 12 और x + y = 5 हल कीजिए।",
+"दो संख्याओं का योग 25 तथा अंतर 5 है। संख्याएँ ज्ञात कीजिए।",
+"दो अंकों की संख्या के अंकों का योग 9 है। संख्या ज्ञात करने की विधि समझाइए।",
+"द्विघात समीकरण किसे कहते हैं? इसका मानक रूप लिखिए।",
+"गुणनखंड विधि से x² − 5x + 6 = 0 हल कीजिए।",
+"x² − 7x + 12 = 0 हल कीजिए।",
+"2x² − 5x + 2 = 0 हल कीजिए।",
+"द्विघात सूत्र लिखिए तथा इसकी सहायता से समीकरण हल कीजिए।",
+"x² + 4x + 4 = 0 हल कीजिए।",
+"विविक्तकर (Discriminant) किसे कहते हैं?",
+"विविक्तकर के आधार पर मूलों की प्रकृति समझाइए।",
+"3x² − 2x + 1 = 0 के मूलों की प्रकृति ज्ञात कीजिए।",
+"दो क्रमागत धनात्मक पूर्णांकों का गुणनफल 72 है। वे संख्याएँ ज्ञात कीजिए।",
+"समांतर श्रेढ़ी किसे कहते हैं? उदाहरण दीजिए।",
+"समांतर श्रेढ़ी का nवाँ पद ज्ञात करने का सूत्र लिखिए।",
+"श्रेढ़ी 2, 4, 6, 8, ... का 20वाँ पद ज्ञात कीजिए।",
+"श्रेढ़ी 3, 7, 11, 15, ... का 15वाँ पद ज्ञात कीजिए।",
+"श्रेढ़ी 5, 10, 15, 20, ... का 25वाँ पद ज्ञात कीजिए।",
+"समांतर श्रेढ़ी के प्रथम n पदों के योग का सूत्र लिखिए।",
+"प्रथम 20 प्राकृतिक संख्याओं का योग ज्ञात कीजिए।",
+"प्रथम 50 सम संख्याओं का योग ज्ञात कीजिए।",
+"प्रथम 30 विषम संख्याओं का योग ज्ञात कीजिए।",
+"यदि किसी AP का प्रथम पद 7 और सार्व अंतर 3 है, तो 25वाँ पद ज्ञात कीजिए।",
+"समरूप त्रिभुज किसे कहते हैं?",
+"सर्वांगसम और समरूप त्रिभुज में अंतर लिखिए।",
+"मूल समानुपात प्रमेय (BPT) लिखिए।",
+"मूल समानुपात प्रमेय को सिद्ध कीजिए।",
+"पाइथागोरस प्रमेय लिखिए और सिद्ध कीजिए।",
+"सिद्ध कीजिए कि समरूप त्रिभुजों के क्षेत्रफलों का अनुपात उनकी संगत भुजाओं के वर्गों के अनुपात के बराबर होता है।",
+"दो समरूप त्रिभुजों की संगत भुजाएँ 3:4 के अनुपात में हैं। उनके क्षेत्रफलों का अनुपात ज्ञात कीजिए।",
+"एक समकोण त्रिभुज की भुजाएँ 3 cm और 4 cm हैं। कर्ण ज्ञात कीजिए।",
+"त्रिभुजों की समरूपता की कसौटियाँ लिखिए।",
+"यदि दो त्रिभुज समरूप हैं, तो उनकी संगत भुजाओं और कोणों के संबंध लिखिए।",
+"निर्देशांक ज्यामिति किसे कहते हैं?",
+"कार्तीय निर्देशांक तल क्या है?",
+"दो बिंदुओं के बीच की दूरी ज्ञात करने का सूत्र लिखिए।",
+"बिंदुओं (2, 3) और (4, 7) के बीच की दूरी ज्ञात कीजिए।",
+"बिंदुओं (1, 2) और (5, 5) के बीच की दूरी ज्ञात कीजिए।",
+"विभाजन सूत्र लिखिए।",
+"बिंदुओं (2, 3) और (4, 5) को मिलाने वाले रेखाखंड का मध्यबिंदु ज्ञात कीजिए।",
+"त्रिभुज का क्षेत्रफल ज्ञात करने का निर्देशांक सूत्र लिखिए।",
+"बिंदुओं (0, 0), (4, 0) और (0, 3) से बने त्रिभुज का क्षेत्रफल ज्ञात कीजिए।",
+"तीन बिंदुओं के संरेखीय होने की शर्त लिखिए।",
+"त्रिकोणमिति किसे कहते हैं?",
+"sin, cos और tan की परिभाषा लिखिए।",
+"sin 30°, cos 60° और tan 45° के मान लिखिए।",
+"sin 0°, cos 0° और tan 0° के मान लिखिए।",
+"sin 90° और cos 90° के मान लिखिए।",
+"त्रिकोणमितीय अनुपातों के नाम लिखिए।",
+"सिद्ध कीजिए: sin²θ + cos²θ = 1।",
+"सिद्ध कीजिए: 1 + tan²θ = sec²θ।",
+"सिद्ध कीजिए: 1 + cot²θ = cosec²θ।",
+"यदि sin θ = 3/5 है, तो cos θ ज्ञात कीजिए (θ न्यूनकोण है)।",
+"ऊँचाई और दूरी से आप क्या समझते हैं?",
+"उन्नयन कोण किसे कहते हैं?",
+"अवनमन कोण किसे कहते हैं?",
+"एक मीनार की ऊँचाई ज्ञात करने में त्रिकोणमिति का उपयोग समझाइए।",
+"किसी पेड़ की छाया और ऊँचाई के बीच संबंध समझाइए।",
+"एक खंभे की छाया 10 मीटर है तथा उन्नयन कोण 45° है। खंभे की ऊँचाई ज्ञात कीजिए।",
+"30° और 60° के कोणों के त्रिकोणमितीय अनुपात लिखिए।",
+"दृष्टि रेखा किसे कहते हैं?",
+"ऊँचाई और दूरी के प्रश्न हल करने की विधि समझाइए।",
+"किसी भवन की ऊँचाई ज्ञात करने के लिए आवश्यक जानकारी लिखिए।",
+"वृत्त किसे कहते हैं?",
+"स्पर्श रेखा किसे कहते हैं?",
+"वृत्त की त्रिज्या और व्यास में संबंध लिखिए।",
+"सिद्ध कीजिए कि स्पर्श बिंदु पर त्रिज्या स्पर्श रेखा पर लंब होती है।",
+"किसी वृत्त की बाहरी बिंदु से खींची गई स्पर्श रेखाओं की लंबाइयाँ बराबर होती हैं। सिद्ध कीजिए।",
+"वृत्त की दो स्पर्श रेखाओं के गुण लिखिए।",
+"छेदक और स्पर्श रेखा में अंतर लिखिए।",
+"किसी वृत्त में कितनी स्पर्श रेखाएँ खींची जा सकती हैं?",
+"केंद्र से स्पर्श रेखा की दूरी के बारे में लिखिए।",
+"वृत्त की स्पर्श रेखा से संबंधित प्रमेय समझाइए।",
+"वृत्त का क्षेत्रफल ज्ञात करने का सूत्र लिखिए।",
+"वृत्त की परिधि का सूत्र लिखिए।",
+"अर्धवृत्त का क्षेत्रफल ज्ञात करने का सूत्र लिखिए।",
+"त्रिज्या 7 cm वाले वृत्त का क्षेत्रफल ज्ञात कीजिए।",
+"त्रिज्या 14 cm वाले वृत्त की परिधि ज्ञात कीजिए।",
+"त्रिज्या 21 cm वाले वृत्त का क्षेत्रफल ज्ञात कीजिए।",
+"वृत्त के त्रिज्यखंड का क्षेत्रफल ज्ञात करने का सूत्र लिखिए।",
+"चाप की लंबाई का सूत्र लिखिए।",
+"90° के त्रिज्यखंड का क्षेत्रफल ज्ञात करने की विधि लिखिए।",
+"एक वृत्त की त्रिज्या 10 cm है। उसका क्षेत्रफल और परिधि ज्ञात कीजिए।",
+"घन का आयतन ज्ञात करने का सूत्र लिखिए।",
+"घनाभ का आयतन ज्ञात करने का सूत्र लिखिए।",
+"बेलन का आयतन ज्ञात करने का सूत्र लिखिए।",
+"शंकु का आयतन ज्ञात करने का सूत्र लिखिए।",
+"गोले का आयतन ज्ञात करने का सूत्र लिखिए।",
+"अर्धगोले का आयतन ज्ञात करने का सूत्र लिखिए।",
+"घन का संपूर्ण पृष्ठीय क्षेत्रफल ज्ञात करने का सूत्र लिखिए।",
+"बेलन का वक्र पृष्ठीय क्षेत्रफल ज्ञात करने का सूत्र लिखिए।",
+"शंकु का वक्र पृष्ठीय क्षेत्रफल ज्ञात करने का सूत्र लिखिए।",
+"गोले का पृष्ठीय क्षेत्रफल ज्ञात करने का सूत्र लिखिए।",
+"7 cm भुजा वाले घन का आयतन ज्ञात कीजिए।",
+"10 cm लंबाई, 5 cm चौड़ाई और 4 cm ऊँचाई वाले घनाभ का आयतन ज्ञात कीजिए।",
+"7 cm त्रिज्या और 10 cm ऊँचाई वाले बेलन का आयतन ज्ञात कीजिए।",
+"3 cm त्रिज्या और 7 cm ऊँचाई वाले शंकु का आयतन ज्ञात कीजिए।",
+"7 cm त्रिज्या वाले गोले का आयतन ज्ञात कीजिए।",
+"घन और घनाभ में अंतर लिखिए।",
+"बेलन और शंकु में अंतर लिखिए।",
+"ठोसों के आयतन और पृष्ठीय क्षेत्रफल में अंतर लिखिए।",
+"एक ठोस को पिघलाकर दूसरा ठोस बनाया जाता है। आयतन में क्या परिवर्तन होता है?",
+"संयुक्त ठोसों का आयतन ज्ञात करने की विधि समझाइए।",
+"सांख्यिकी किसे कहते हैं?",
+"माध्य किसे कहते हैं?",
+"माध्य ज्ञात करने की प्रत्यक्ष विधि लिखिए।",
+"कल्पित माध्य विधि समझाइए।",
+"माध्यिका किसे कहते हैं?",
+"बहुलक किसे कहते हैं?",
+"माध्य, माध्यिका और बहुलक में अंतर लिखिए।",
+"संचयी बारंबारता किसे कहते हैं?",
+"वर्ग अंतराल और वर्ग चिह्न किसे कहते हैं?",
+"निम्न संख्याओं का माध्य ज्ञात कीजिए: 2, 4, 6, 8, 10।",
+"संख्याओं 5, 10, 15, 20, 25 की माध्यिका ज्ञात कीजिए।",
+"संख्याओं 2, 3, 3, 4, 5, 3, 6 का बहुलक ज्ञात कीजिए।",
+"बारंबारता वितरण सारणी क्या है?",
+"माध्य निकालने का सूत्र लिखिए।",
+"माध्यिका निकालने का सूत्र लिखिए।",
+"प्रायिकता किसे कहते हैं?",
+"प्रायिकता का मान किस सीमा में होता है?",
+"असंभव घटना किसे कहते हैं?",
+"निश्चित घटना किसे कहते हैं?",
+"एक सिक्का उछालने पर चित आने की प्रायिकता ज्ञात कीजिए।",
+"एक पासा फेंकने पर 6 आने की प्रायिकता ज्ञात कीजिए।",
+"एक पासा फेंकने पर सम संख्या आने की प्रायिकता ज्ञात कीजिए।",
+"एक पासा फेंकने पर विषम संख्या आने की प्रायिकता ज्ञात कीजिए।",
+"एक ताश की गड्डी से एक इक्का निकालने की प्रायिकता ज्ञात कीजिए।",
+"एक सिक्के को दो बार उछालने पर दोनों बार चित आने की प्रायिकता ज्ञात कीजिए।",
+"यादृच्छिक प्रयोग किसे कहते हैं?",
+"अनुकूल परिणाम किसे कहते हैं?",
+"प्रतिदर्श समष्टि किसे कहते हैं?",
+"घटना और परिणाम में अंतर लिखिए।",
+"प्रायिकता का शास्त्रीय सूत्र लिखिए।",
+"2x + 3 = 11 समीकरण हल कीजिए।",
+"x² − 16 = 0 हल कीजिए।",
+"3x² − 12x = 0 के मूल ज्ञात कीजिए।",
+"1, 4, 7, 10, ... का 30वाँ पद ज्ञात कीजिए।",
+"प्रथम 25 प्राकृतिक संख्याओं का योग ज्ञात कीजिए।",
+"यदि किसी AP का प्रथम पद 4 और सार्व अंतर 5 है, तो 10वाँ पद ज्ञात कीजिए।",
+"6, 12, 18, 24, ... के प्रथम 15 पदों का योग ज्ञात कीजिए।",
+"बिंदुओं (3, 4) और (6, 8) के बीच की दूरी ज्ञात कीजिए।",
+"बिंदुओं (2, 4) और (8, 10) का मध्यबिंदु ज्ञात कीजिए।",
+"त्रिभुज के तीनों कोणों का योग कितना होता है? सिद्ध कीजिए।",
+"समकोण त्रिभुज में कर्ण का वर्ग और अन्य दो भुजाओं के वर्गों का संबंध लिखिए।",
+"यदि tan θ = 1 है, तो θ का मान ज्ञात कीजिए (θ न्यूनकोण है)।",
+"यदि cos θ = 4/5 है, तो sin θ ज्ञात कीजिए (θ न्यूनकोण है)।",
+"1 − sin²θ को cos²θ के रूप में व्यक्त कीजिए।",
+"1 − cos²θ को sin²θ के रूप में व्यक्त कीजिए।",
+"14 cm व्यास वाले वृत्त की परिधि ज्ञात कीजिए।",
+"14 cm त्रिज्या वाले अर्धवृत्त का क्षेत्रफल ज्ञात कीजिए।",
+"14 cm भुजा वाले घन का संपूर्ण पृष्ठीय क्षेत्रफल ज्ञात कीजिए।",
+"12 cm लंबाई, 8 cm चौड़ाई और 5 cm ऊँचाई वाले घनाभ का आयतन ज्ञात कीजिए।",
+"14 cm त्रिज्या और 20 cm ऊँचाई वाले बेलन का आयतन ज्ञात कीजिए।",
+"7 cm त्रिज्या और 24 cm ऊँचाई वाले शंकु की तिर्यक ऊँचाई ज्ञात कीजिए।",
+"3, 5, 7, 9, 11 का माध्य ज्ञात कीजिए।",
+"4, 8, 6, 10, 12 की माध्यिका ज्ञात कीजिए।",
+"1, 2, 2, 3, 4, 2, 5 का बहुलक ज्ञात कीजिए।",
+"एक पासा फेंकने पर 4 से बड़ी संख्या आने की प्रायिकता ज्ञात कीजिए।",
+"एक पासा फेंकने पर 3 से छोटी संख्या आने की प्रायिकता ज्ञात कीजिए।",
+"दो सिक्के एक साथ उछालने पर कम से कम एक चित आने की प्रायिकता ज्ञात कीजिए।",
+"10 और 20 के बीच की अभाज्य संख्याएँ लिखिए।",
+"144 और 180 का HCF तथा LCM ज्ञात कीजिए।",
+"18, 24 और 36 का HCF ज्ञात कीजिए।",
+"12, 15 और 20 का LCM ज्ञात कीजिए।",
+"x² + 2x − 15 = 0 को गुणनखंड विधि से हल कीजिए।",
+"5x² − 20 = 0 हल कीजिए।",
+"समीकरण 2x + 3y = 12 और x + y = 5 हल कीजिए।",
+"5, 8, 11, 14, ... का 20वाँ पद ज्ञात कीजिए।",
+"प्रथम 40 विषम प्राकृतिक संख्याओं का योग ज्ञात कीजिए।",
+"एक वृत्त की त्रिज्या 3.5 cm है। उसका क्षेत्रफल ज्ञात कीजिए।",
+"एक गोले की त्रिज्या 3 cm है। उसका पृष्ठीय क्षेत्रफल ज्ञात कीजिए।",
+"एक बेलन की त्रिज्या 7 cm और ऊँचाई 15 cm है। उसका वक्र पृष्ठीय क्षेत्रफल ज्ञात कीजिए।",
+"वास्तविक जीवन में गणित के उपयोगों का वर्णन कीजिए।"
+];
+
+function make200(arr){
+var out=[];
+for(var i=0;i<arr.length;i++){
+var a="इस प्रश्न का हल अपनी किताब के अनुसार विस्तार से लिखिए। पहले सूत्र लिखिए, फिर मान रखिए, फिर हल कीजिए। उत्तर के साथ चरण (Steps) अवश्य लिखिए। यही उत्तर बोर्ड परीक्षा में अच्छे नंबर दिलाएगा।";
+if(arr===ENGLISH10) a="Write this answer in detail from your textbook. First write introduction, then explain in 4-5 points with examples, then write conclusion.";
+out.push([arr[i],a]);
+}
+return out;
+}
+function makeGeneric(topics){
+var out=[];
+for(var i=0;i<200;i++){
+var b=topics[i%topics.length];
+var part=Math.floor(i/topics.length)+1;
+var q=b+(part>1?" (Part "+part+")":"");
+var a="इस प्रश्न का उत्तर अपनी किताब के अनुसार विस्तार से लिखिए। परिभाषा, उदाहरण, विशेषताएँ और महत्व लिखिए।";
+out.push([q,a]);
+}
+return out;
+}
+var DATA10={},DATA12={};
+DATA10['सामान्य हिन्दी']=make200(HINDI10);
+DATA10['English']=make200(ENGLISH10);
+DATA10['Maths']=make200(MATHS10);
+DATA10['Science']=makeGeneric(["प्रकाश का परावर्तन","मानव नेत्र","ओम का नियम","प्रतिरोध श्रेणी समांतर","विद्युत शक्ति","चुंबक और क्षेत्र","विद्युत मोटर","जनरेटर","रासायनिक अभिक्रिया","अम्ल क्षार लवण","pH मान","धातु अधातु","कार्बन यौगिक","प्रकाश संश्लेषण","मानव हृदय","पर्यावरण प्रदूषण","अपवर्तन","लेंस सूत्र","दर्पण सूत्र","दृष्टि दोष","विद्युत धारा","चुंबकीय प्रभाव","ऊर्जा स्रोत","जैव प्रक्रम","नियंत्रण समन्वय"]);
+DATA10['Social Science']=makeGeneric(["लोकतंत्र क्या है","भारतीय संविधान","फ्रांसीसी क्रांति","महात्मा गांधी का योगदान","संसाधन के प्रकार","कृषि के प्रकार","औद्योगिक क्रांति","चुनाव प्रक्रिया","भारत का विभाजन","जल संसाधन","मृदा और वन","उद्योग","परिवहन","मौलिक अधिकार","मौलिक कर्तव्य","संसद","राष्ट्रपति","प्रधानमंत्री","न्यायपालिका","मतदान का महत्व","प्रथम विश्व युद्ध","द्वितीय विश्व युद्ध","भारत की स्वतंत्रता","भगत सिंह","सुभाष चंद्र बोस"]);
+DATA10['Drawing']=makeGeneric(["पेंसिल शेडिंग","रेखा चित्रण","प्राकृतिक दृश्य","स्थिर जीवन","जल रंग चित्रण","छाया प्रकाश","परिप्रेक्ष्य","मानव आकृति","चेहरे का चित्र","पुष्प चित्रण","पशु चित्रण","पक्षी चित्रण","वर्ण चक्र","प्राथमिक रंग","द्वितीयक रंग","गर्म ठंडे रंग","कम्पोजिशन","रंगों का मिश्रण","पोस्टर बनाना","रंगोली","मेहंदी डिजाइन","लोक कला","मधुबनी कला","वारली कला","HB पेंसिल उपयोग"]);
+DATA12['सामान्य हिन्दी']=makeGeneric(["प्रेमचन्द का परिचय","जयशंकर प्रसाद का परिचय","छायावाद की विशेषताएँ","प्रगतिवाद की विशेषताएँ","रस की परिभाषा","संधि समास अंतर","पर्यावरण प्रदूषण निबंध","महिला सशक्तिकरण","विज्ञान वरदान अभिशाप","प्रधानाचार्य को पत्र","भारतेन्दु का परिचय","द्विवेदी का परिचय","महादेवी का परिचय","निराला का परिचय","दिनकर का परिचय","कहानी के तत्व","अलंकार की परिभाषा","छंद की परिभाषा","भक्तिकाल की विशेषताएँ","रीतिकाल की विशेषताएँ","संज्ञा की परिभाषा","क्रिया की परिभाषा","डिजिटल इंडिया","पर्यावरण संरक्षण","किसान का जीवन"]);
+DATA12['English']=makeGeneric(["The Third Level Story","Tiger King Story","The Enemy Message","Active Passive Voice","Direct Indirect Speech","Derry and Mr Lamb","Importance of Education Essay","What is Noun","Articles A An The","Letter to Friend Success","What was Third Level","Who was Tiger King","Who was Dr Sadao","What is Communication","What is Verb","What is Tense","What is Synonym","What is Antonym","Subject Verb Agreement","Example of Noun","Example of Verb","Example of Adjective","Example of Adverb","Example of Preposition","Example of Conjunction"]);
+DATA12['Maths']=makeGeneric(["अवकलन का अर्थ","समाकलन का अर्थ","आव्यूह क्या है","प्रायिकता","सदिश क्या है","अवकल समीकरण dy/dx=2x","सारणिक का मान","स्पर्श रेखा ढाल","निश्चित समाकलन क्षेत्रफल","रैखिक प्रोग्रामन","Transpose Matrix","Determinant","y=x^3 अवकलन","sin x अवकलन","cos x अवकलन","e^x अवकलन","log x अवकलन","Integration x^2","Integration cos x","Integration sin x","Integration e^x","Integration 1/x","सिक्का प्रायिकता","पासा प्रायिकता","Vector परिमाण"]);
+DATA12['Physics']=makeGeneric(["कूलॉम का नियम","ओम का नियम","ट्रांसफार्मर","प्रकाश विद्युत प्रभाव","नाभिकीय विखंडन संलयन","p-n संधि डायोड","लेंस सूत्र","फैराडे नियम","अर्ध-आयु","ट्रांजिस्टर","विद्युत क्षेत्र","गाउस नियम","विद्युत विभव","धारिता","संधारित्र","विद्युत धारा","प्रतिरोध","किरचॉफ नियम","बायो-सावर्ट नियम","लॉरेंज बल","लेन्ज नियम","प्रत्यावर्ती धारा","परावर्तन नियम","अपवर्तन नियम","पूर्ण आंतरिक परावर्तन"]);
+DATA12['Chemistry']=makeGeneric(["राउल्ट का नियम","नर्नस्ट समीकरण","SN1 SN2 अंतर","फीनॉल अम्लीय क्यों","कैनिजारो अभिक्रिया","हॉफमैन ब्रोमामाइड","DNA RNA अंतर","लैंथेनाइड संकुचन","उपसहसंयोजन यौगिक","कोलराउश नियम","विलयन","मोलरता","मोललता","हेनरी नियम","परासरण","फैराडे नियम","अभिक्रिया कोटि","आरेनियस समीकरण","वुर्ट्ज अभिक्रिया","ग्लूकोज सूत्र","एथेनॉल सूत्र","एसीटिक अम्ल सूत्र","pH","ऑक्सीकरण","अपचयन"]);
+
+function renderAll(){
+document.getElementById('c10-btn').className='class-btn'+(curClass=='10'?' active':'');
+document.getElementById('c12-btn').className='class-btn'+(curClass=='12'?' active':'');
+var subs=SUBJECTS[curClass];var sh="";for(var i=0;i<subs.length;i++){sh+='<button class="sub-btn'+(subs[i]==curSub?' active':'')+'" data-i="'+i+'">'+subs[i]+'</button>';}
+document.getElementById('sub-box').innerHTML=sh;
+var btns=document.getElementById('sub-box').getElementsByTagName('button');
+for(var i=0;i<btns.length;i++){btns[i].onclick=function(){curSub=SUBJECTS[curClass][parseInt(this.getAttribute('data-i'))];renderAll();};}
+var DATA=(curClass=='10'?DATA10:DATA12);var arr=DATA[curSub];
+var extra='';
+if(curClass=='10'&&curSub=='Maths') extra='<div class="note"><b>📐 UP Board कक्षा 10वीं गणित – 200 महत्वपूर्ण प्रश्न</b><br>वास्तविक संख्याएँ (1-10) | बहुपद (11-20) | रैखिक समीकरण (21-30) | द्विघात (31-40) | AP (41-50) | त्रिभुज (51-60) | निर्देशांक (61-70) | त्रिकोणमिति (71-80) | अनुप्रयोग (81-90) | वृत्त (91-100) | क्षेत्रफल (101-110) | पृष्ठीय (111-130) | सांख्यिकी (131-145) | प्रायिकता (146-160) | मिश्रित (161-200)<br><b>नोट:</b> ये 200 अभ्यास के महत्वपूर्ण प्रश्न हैं, बोर्ड परीक्षा में आने की गारंटी नहीं। UP Board 2026-27 की पुस्तक से मिलाकर पढ़ना।</div>';
+if(curClass=='10'&&curSub=='English') extra='<div class="note"><b>📚 UP Board 2027 – Class 10 English – 200 Questions</b><br>First Flight Prose (1-63) | Poetry (64-84) | Footprints (85-144) | Character (145-164) | General (165-190) | Poetry Revision (191-200)</div>';
+if(curClass=='10'&&curSub=='सामान्य हिन्दी') extra='<div class="note"><b>📝 UP Board 2027 – कक्षा 10वीं सामान्य हिन्दी – 200 प्रश्न</b><br>खंड 1 गद्य (1-40) | खंड 2 पद्य (41-80) | खंड 3 व्याकरण (81-140) | खंड 4 लेखन (141-200)</div>';
+var html=extra+'<div class="title-box"><b>🔥 UP Board Class '+curClass+' '+curSub+' 2027</b><br>Long Answer - 200 महत्वपूर्ण प्रश्न</div><div class="count">Total Questions: '+arr.length+'</div><div class="q-box">';
+for(var j=0;j<arr.length;j++){
+var khand='';
+if(curClass=='10'&&curSub=='Maths'){
+if(j==0)khand='<div style="background:#0b3d91;color:white;padding:10px;border-radius:8px;margin-bottom:10px;text-align:center"><b>अध्याय 1 – वास्तविक संख्याएँ (1-10)</b></div>';
+if(j==10)khand='<div style="background:#0b3d91;color:white;padding:10px;border-radius:8px;margin-bottom:10px;text-align:center"><b>अध्याय 2 – बहुपद (11-20)</b></div>';
+if(j==20)khand='<div style="background:#0b3d91;color:white;padding:10px;border-radius:8px;margin-bottom:10px;text-align:center"><b>अध्याय 3 – रैखिक समीकरण युग्म (21-30)</b></div>';
+if(j==30)khand='<div style="background:#0b3d91;color:white;padding:10px;border-radius:8px;margin-bottom:10px;text-align:center"><b>अध्याय 4 – द्विघात समीकरण (31-40)</b></div>';
+if(j==40)khand='<div style="background:#0b3d91;color:white;padding:10px;border-radius:8px;margin-bottom:10px;text-align:center"><b>अध्याय 5 – समांतर श्रेढ़ियाँ (41-50)</b></div>';
+if(j==50)khand='<div style="background:#0b3d91;color:white;padding:10px;border-radius:8px;margin-bottom:10px;text-align:center"><b>अध्याय 6 – त्रिभुज (51-60)</b></div>';
+if(j==60)khand='<div style="background:#0b3d91;color:white;padding:10px;border-radius:8px;margin-bottom:10px;text-align:center"><b>अध्याय 7 – निर्देशांक ज्यामिति (61-70)</b></div>';
+if(j==70)khand='<div style="background:#0b3d91;color:white;padding:10px;border-radius:8px;margin-bottom:10px;text-align:center"><b>अध्याय 8 – त्रिकोणमिति (71-80)</b></div>';
+if(j==80)khand='<div style="background:#0b3d91;color:white;padding:10px;border-radius:8px;margin-bottom:10px;text-align:center"><b>अध्याय 9 – त्रिकोणमिति अनुप्रयोग (81-90)</b></div>';
+if(j==90)khand='<div style="background:#0b3d91;color:white;padding:10px;border-radius:8px;margin-bottom:10px;text-align:center"><b>अध्याय 10 – वृत्त (91-100)</b></div>';
+if(j==100)khand='<div style="background:#0b3d91;color:white;padding:10px;border-radius:8px;margin-bottom:10px;text-align:center"><b>अध्याय 11 – वृत्तों से संबंधित क्षेत्रफल (101-110)</b></div>';
+if(j==110)khand='<div style="background:#0b3d91;color:white;padding:10px;border-radius:8px;margin-bottom:10px;text-align:center"><b>अध्याय 12 – पृष्ठीय क्षेत्रफल और आयतन (111-130)</b></div>';
+if(j==130)khand='<div style="background:#0b3d91;color:white;padding:10px;border-radius:8px;margin-bottom:10px;text-align:center"><b>अध्याय 13 – सांख्यिकी (131-145)</b></div>';
+if(j==145)khand='<div style="background:#0b3d91;color:white;padding:10px;border-radius:8px;margin-bottom:10px;text-align:center"><b>अध्याय 14 – प्रायिकता (146-160)</b></div>';
+if(j==160)khand='<div style="background:#0b3d91;color:white;padding:10px;border-radius:8px;margin-bottom:10px;text-align:center"><b>अतिरिक्त – मिश्रित अभ्यास (161-200)</b></div>';
+}
+if(curClass=='10'&&curSub=='English'){
+if(j==0)khand='<div style="background:#0b3d91;color:white;padding:10px;border-radius:8px;margin-bottom:10px;text-align:center"><b>Section 1 – First Flight Prose (1-63)</b></div>';
+if(j==63)khand='<div style="background:#0b3d91;color:white;padding:10px;border-radius:8px;margin-bottom:10px;text-align:center"><b>Section 2 – Poetry (64-84)</b></div>';
+if(j==84)khand='<div style="background:#0b3d91;color:white;padding:10px;border-radius:8px;margin-bottom:10px;text-align:center"><b>Section 3 – Footprints (85-144)</b></div>';
+if(j==144)khand='<div style="background:#0b3d91;color:white;padding:10px;border-radius:8px;margin-bottom:10px;text-align:center"><b>Section 4 – Character Sketches (145-164)</b></div>';
+if(j==164)khand='<div style="background:#0b3d91;color:white;padding:10px;border-radius:8px;margin-bottom:10px;text-align:center"><b>Section 5 – General (165-190)</b></div>';
+if(j==190)khand='<div style="background:#0b3d91;color:white;padding:10px;border-radius:8px;margin-bottom:10px;text-align:center"><b>Section 6 – Poetry Revision (191-200)</b></div>';
+}
+if(curClass=='10'&&curSub=='सामान्य हिन्दी'){
+if(j==0)khand='<div style="background:#0b3d91;color:white;padding:10px;border-radius:8px;margin-bottom:10px;text-align:center"><b>खंड 1 – गद्य (1-40)</b></div>';
+if(j==40)khand='<div style="background:#0b3d91;color:white;padding:10px;border-radius:8px;margin-bottom:10px;text-align:center"><b>खंड 2 – पद्य (41-80)</b></div>';
+if(j==80)khand='<div style="background:#0b3d91;color:white;padding:10px;border-radius:8px;margin-bottom:10px;text-align:center"><b>खंड 3 – व्याकरण (81-140)</b></div>';
+if(j==140)khand='<div style="background:#0b3d91;color:white;padding:10px;border-radius:8px;margin-bottom:10px;text-align:center"><b>खंड 4 – लेखन (141-200)</b></div>';
+}
+html+=khand+'<div class="q-item"><div class="q"><span class="num">'+(j+1)+'.</span> '+arr[j][0]+'</div><div class="a"><b>उत्तर –</b> '+arr[j][1]+'</div></div>';
+}
+html+='</div>';document.getElementById('content').innerHTML=html;
+}
+document.getElementById('c10-btn').onclick=function(){curClass='10';curSub=SUBJECTS['10'][0];renderAll();};
+document.getElementById('c12-btn').onclick=function(){curClass='12';curSub=SUBJECTS['12'][0];renderAll();};
+renderAll();
 </script>
+</body>
+</html>
 </body>
 </html>
 </body>
