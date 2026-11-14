@@ -7,19 +7,28 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
 body{background:#f2f4f8}
-.top{background:#0b3d91;color:white;padding:20px 15px;text-align:center}
-.top h1{font-size:26px}
+.top{background:#0b3d91;color:white;padding:22px 15px;text-align:center}
+.top h1{font-size:28px}
 .top p{font-size:14px;opacity:0.9;margin-top:5px}
 .search-box{padding:15px;text-align:center}
 .search-box input{width:95%;max-width:500px;padding:12px;border-radius:25px;border:1px solid #ccc;font-size:16px;outline:none}
-.tabs{display:flex;justify-content:center;gap:10px;padding:0 15px}
-.tabs button{padding:10px 20px;border:none;border-radius:20px;background:white;cursor:pointer;font-weight:bold;box-shadow:0 2px 5px #00000020}
-.tabs button.active{background:#0b3d91;color:white}
+.boards{display:flex;gap:12px;padding:5px 15px;max-width:600px;margin:auto}
+.board-btn{flex:1;padding:18px 10px;border-radius:14px;border:none;cursor:pointer;text-align:center;box-shadow:0 3px 8px #00000020;background:white}
+.board-btn b{font-size:18px;display:block}
+.board-btn span{font-size:12px;color:#666}
+.board-btn.active{background:#0b3d91;color:white}
+.board-btn.active span{color:#dbeafe}
+/* BIJNOR FILTER */
+.sub-filter{display:flex;gap:8px;justify-content:center;margin:10px 15px 0}
+.sub-filter button{padding:8px 16px;border-radius:20px;border:1px solid #0b3d91;background:white;color:#0b3d91;font-weight:bold;cursor:pointer}
+.sub-filter button.active{background:#0b3d91;color:white}
 .container{padding:15px;max-width:800px;margin:auto}
-.card{background:white;border-radius:12px;padding:15px;margin-bottom:15px;box-shadow:0 2px 8px #00000010;display:flex;justify-content:space-between;align-items:center}
-.card h3{font-size:17px}
+.section-title{font-size:19px;font-weight:bold;margin:15px 0 10px 2px}
+.card{background:white;border-radius:12px;padding:15px;margin-bottom:12px;box-shadow:0 2px 8px #00000010;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.card h3{font-size:16px}
 .card p{font-size:13px;color:#666;margin-top:4px}
-.btn{background:#25D366;color:white;text-decoration:none;padding:10px 16px;border-radius:8px;font-weight:bold;font-size:14px}
+.badge{background:#FFF3CD;color:#856404;font-size:11px;padding:3px 8px;border-radius:10px;font-weight:bold;margin-left:5px}
+.btn{background:#25D366;color:white;text-decoration:none;padding:10px 16px;border-radius:8px;font-weight:bold;font-size:14px;white-space:nowrap}
 .footer{text-align:center;padding:20px;color:#888;font-size:13px}
 </style>
 </head>
@@ -27,13 +36,96 @@ body{background:#f2f4f8}
 
 <div class="top">
   <h1>📚 RAJAN AI</h1>
-  <p>Previous Year Papers - UP Board & CBSE Board</p>
-  <p style="font-size:12px;margin-top:8px">Made by Rajan Kamboj</p>
+  <p>Previous Year Papers - Free Download</p>
+  <p style="font-size:12px;margin-top:8px">Made by Rajan Kamboj | Bijnor, UP</p>
 </div>
 
 <div class="search-box">
-  <input type="text" id="search" onkeyup="searchPaper()" placeholder="🔍 Paper dhoondho... jaise 2024, Hindi, Maths">
+  <input type="text" id="search" onkeyup="searchPaper()" placeholder="🔍 Paper dhoondho... jaise 2024, Hindi, Bijnor">
 </div>
 
-<div class="tabs">
-  <button class="active" onclick="showBoard
+<!-- 2 BADE OPTION -->
+<div class="boards">
+  <button class="board-btn active" id="btn-up" onclick="showBoard('up')">
+    <b>🏫 UP BOARD</b>
+    <span>UPMSP Prayagraj</span>
+  </button>
+  <button class="board-btn" id="btn-cbse" onclick="showBoard('cbse')">
+    <b>🎓 CBSE BOARD</b>
+    <span>Central Board</span>
+  </button>
+</div>
+
+<!-- UP BOARD KE ANDAR BIJNOR OPTION -->
+<div class="sub-filter" id="up-filter">
+  <button class="active" id="filter-all" onclick="filterUP('all',this)">All UP Papers</button>
+  <button id="filter-bijnor" onclick="filterUP('bijnor',this)">📍 Only Bijnor District</button>
+</div>
+
+<div class="container">
+
+  <!-- ============ UP BOARD ============ -->
+  <div id="section-up">
+    <div class="section-title">📘 UP Board Papers</div>
+
+    <!-- BIJNOR KA PAPER - IS BLOCK KO COPY KARO -->
+    <div class="card up-card bijnor">
+      <div>
+        <h3>UP Board Class 10 - Hindi - 2024 <span class="badge">BIJNOR</span></h3>
+        <p>Bijnor District | Hindi Medium | PDF</p>
+      </div>
+      <a class="btn" href="PAPER-KA-LINK-YAHAN-DALO" target="_blank">Download</a>
+    </div>
+
+    <!-- NORMAL UP KA PAPER - IS BLOCK KO COPY KARO -->
+    <div class="card up-card all-up">
+      <div>
+        <h3>UP Board Class 12 - Maths - 2024</h3>
+        <p>UP Board | Hindi Medium | PDF</p>
+      </div>
+      <a class="btn" href="PAPER-KA-LINK-YAHAN-DALO" target="_blank">Download</a>
+    </div>
+    <!-- UP YAHAN TAK -->
+  </div>
+
+  <!-- ============ CBSE BOARD ============ -->
+  <div id="section-cbse" style="display:none">
+    <div class="section-title">📗 CBSE Board Papers</div>
+    <div class="card">
+      <div>
+        <h3>CBSE Class 10 - Science - 2024</h3>
+        <p>CBSE Board | English Medium | PDF</p>
+      </div>
+      <a class="btn" href="PAPER-KA-LINK-YAHAN-DALO" target="_blank">Download</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">© 2026 Rajan AI - Bijnor | All Papers Free</div>
+
+<script>
+function showBoard(board){
+  document.getElementById('section-up').style.display = board=='up' ? 'block' : 'none';
+  document.getElementById('section-cbse').style.display = board=='cbse' ? 'block' : 'none';
+  document.getElementById('up-filter').style.display = board=='up' ? 'flex' : 'none';
+  document.getElementById('btn-up').classList.toggle('active', board=='up');
+  document.getElementById('btn-cbse').classList.toggle('active', board=='cbse');
+}
+function filterUP(type, btn){
+  document.getElementById('filter-all').classList.toggle('active', type=='all');
+  document.getElementById('filter-bijnor').classList.toggle('active', type=='bijnor');
+  document.querySelectorAll('.up-card').forEach(card=>{
+    if(type=='all') card.style.display='flex';
+    else card.style.display = card.classList.contains('bijnor') ? 'flex' : 'none';
+  });
+}
+function searchPaper(){
+  let v = document.getElementById('search').value.toLowerCase();
+  document.querySelectorAll('.card').forEach(card=>{
+    card.style.display = card.innerText.toLowerCase().includes(v) ? 'flex' : 'none';
+  });
+}
+</script>
+</body>
+</html>
