@@ -3114,6 +3114,35 @@ renderAll();
   <div style="text-align: center; margin-top: 30px; padding-bottom: 20px; color: #ffffff; font-size: 18px; font-family: Arial, sans-serif; opacity: 0.9;">
   Admin Rajan ✅
   </div>
-</body>
+  <button id="loginBtn" style="background:#fff; color:#000; padding:10px 18px; border-radius:20px; border:none; font-weight:bold;">🔐 Login with Google</button>
+<div id="userInfo" style="color:white;"></div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/13.3.0/firebase-app.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/13.3.0/firebase-auth.js";
+const firebaseConfig = {
+  apiKey: "AIzaSyDOlSPOUDfk96e2g4cULTpGGnsrgYdQO3U",
+  authDomain: "rajan-ai-previous-paper.firebaseapp.com",
+  projectId: "rajan-ai-previous-paper",
+  storageBucket: "rajan-ai-previous-paper.firebasestorage.app",
+  messagingSenderId: "345385805522",
+  appId: "1:345385805522:web:003b5a8473408825156f0b"
+};
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+const btn = document.getElementById('loginBtn');
+const info = document.getElementById('userInfo');
+btn.onclick = async () => {
+  if(auth.currentUser){ await signOut(auth); }
+  else { try{ await signInWithPopup(auth, provider); } catch(e){ alert(e.message); } }
+};
+onAuthStateChanged(auth, (user) => {
+  if(user){ btn.textContent = "Logout"; info.innerHTML = "Namaste, " + user.displayName + " 👋"; }
+  else { btn.textContent = "🔐 Login with Google"; info.innerHTML = ""; }
+});
+</script>
+  </body>
 </html>
+
 
